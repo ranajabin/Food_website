@@ -1,0 +1,1909 @@
+<mvc:View
+    controllerName="customerapp.customerodataapp.controller.Detail"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:tnt="sap.tnt"
+    xmlns:wt="customerapp.customerodataapp.control">
+>
+    <Page
+        id="page"
+        title="{i18n>title3}"
+        titleAlignment="Center"
+        showNavButton="true"
+        navButtonPress="navPressBack"
+        class="body3 sapUiResponsiveContentPadding"
+    >
+        <headerContent>
+            <Button
+                icon="sap-icon://navigation-right-arrow"
+                tooltip="Next Page"
+                press="onNavNext"
+            />
+        </headerContent>
+
+        <content>
+            <VBox fitContainer="true">
+                <Toolbar class="sapcompact">
+                    <Label
+                        text="Food App"
+                        class="sapMLabel2"
+                        design="Bold"
+                    />
+                    <ToolbarSpacer />
+
+                    <ComboBox
+                        selectionChange="handleSelectionChange"
+                        selectionFinish="handleSelectionFinish"
+                        width="300px"
+                        id="_empShftA"
+                        visible="true"
+                        placeholder="Enter Location"
+                        items="{Data1>/results}"
+                        icon="sap-icon://location"
+                    >
+                        <core:Item
+                            key="009"
+                            id="_idStras"
+                            text="{Data1>Stras}"
+                        />
+                    </ComboBox>
+                    <SearchField
+                        width="500px"
+                        placeholder="search for a restaurant"
+                        search="onFilterSearch"
+                        id="_idName1"
+                    />
+                    
+                    <Button
+                        text="Search"
+                        type="Emphasized"
+                        press="onSearch"
+                    />
+                    <ToolbarSpacer />
+                    <Button
+                        text="Login"
+                        type="Transparent"
+                        press="onPressLogin"
+                        class="sapMBtnContent1"
+                    />
+                    <Button
+                        text="Signup"
+                        type="Transparent"
+                        press="onPressSignup"
+                        class="sapMBtnContent1"
+                    />
+                </Toolbar>
+
+                <tnt:ToolHeader class="sapUiTinyMargin toolhdr">
+                    <!-- <Toolbar class = "toolbar1" > -->
+                    <!-- <HBox > -->
+
+                    <core:Icon src="sap-icon://iphone" />
+
+                    <Link
+                        text="Get the App"
+                        press="onPressGetApp"
+                    />
+
+                    <ToolbarSpacer />
+                    <core:Icon src="sap-icon://cart" />
+                    <Button text="Order Food" />
+
+                    <core:Icon src="sap-icon://clinical-task-tracker" />
+                    <Button text="Book a Table" />
+
+                    <!-- </HBox> -->
+                </tnt:ToolHeader>
+                <!-- </Toolbar> -->
+                <f:SimpleForm>
+                    <f:content>
+                        <HBox class="frm123">
+                            <ImageContent
+                                src=" "
+                                class="immg"
+                            />
+                        </HBox>
+                    </f:content>
+                </f:SimpleForm>
+
+                <ObjectAttribute
+                    title=""
+                    text="Home/ India/ Delhi NCR/ Restaurants"
+                    active="true"
+                    class="sapMObjectAttributeActive sapMObjectAttributeText sapMOH"
+                />
+                <!-- <f:SimpleForm>
+                <f:content> -->
+
+                <!-- <ImageContent src= "https://b.zmtcdn.com/data/pictures/4/3734/30eb8dee1f3578ec2a9309ef8f2287be_o2_featured_v2.jpg?output-format=webp" width = "100%" height = "100%" /> -->
+
+                <!-- </f:content>
+                 </f:SimpleForm> -->
+
+                <VBox>
+                    <IconTabBar
+                        upperCase="true"
+                        expandable="false"
+                        applyContentPadding="true"
+                        stretchContentHeight="true"
+                        class="sapUiResponsiveContentPadding"
+                    >
+                        <items>
+                            <IconTabFilter
+                                key="Per Inf"
+                                text="{i18n>Delivery} "
+                            >
+                                <!-- <f:SimpleForm class = "sapUiSmallMargin frmfiltr" >
+                                    <f:content> -->
+                                <HBox class="fltr">
+                                    <Button
+                                        text=" Filter"
+                                        icon="sap-icon://customize"
+                                        width="120px"
+                                        class="sapMBtnInner1"
+                                        press = "onLoadDialog"
+                                    />
+                                    <Button
+                                        text=" Rating: 4.0+"
+                                        icon=""
+                                        width="120px"
+                                        class="sapMBtnInner1"
+                                    />
+                                    <Button
+                                        text=" Pure Veg"
+                                        icon=""
+                                        width="120px"
+                                        class="sapMBtnInner1"
+                                    />
+                                    <Button
+                                        text=" Cuisines"
+                                        icon="sap-icon://customize"
+                                        width="120px"
+                                        class="sapMBtnInner1"
+                                    />
+                                    <!-- <Button text = " Filter" icon = "sap-icon://customize" /> -->
+                                </HBox>
+                                <!-- </f:content>
+                                </f:SimpleForm> -->
+                                <Text text=" " />
+                                <f:SimpleForm
+                                    id="SimpleFormDisplay480"
+                                    class="form1"
+                                    editable="false"
+                                    layout="ResponsiveGridLayout"
+                                    title="Inspiration for your first Order: "
+                                >
+                                    <f:content>
+                                        <l:HorizontalLayout>
+                                            <Carousel
+                                                height="auto"
+                                                width="58%"
+                                                pages="5"
+                                            >
+                                                <customLayout>
+                                                    <CarouselLayout
+                                                        visiblePagesCount="6"
+                                                    />
+                                                </customLayout>
+                                                <VBox>
+                                                    <!-- <SlideTile
+                                                    class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                > -->
+                                                    <HBox class="outer">
+                                                        <GenericTile
+                                                            backgroundImage="https://b.zmtcdn.com/data/dish_images/197987b7ebcd1ee08f8c25ea4e77e20f1634731334.png"
+                                                            press="onClickStarter"
+                                                            class="sapUiTinyMarginBegin sapUiTinyMarginTop containerimg "
+                                                        >
+                                                            <!-- <TileContent
+                                                            footer=""
+                                                        /> -->
+                                                        </GenericTile>
+                                                        <HBox class="inner">
+                                                            <GenericTile
+                                                                backgroundImage="https://i.pinimg.com/236x/80/a5/94/80a5945efa0b579ca80ed1f9bb606924.jpg"
+                                                                press="onClickStarter"
+                                                                class="sapUiTinyMarginBegin sapUiTinyMarginTop containerimg "
+                                                            >
+                                                                <!-- <TileContent
+                                                            footer=""
+                                                        /> -->
+                                                            </GenericTile>
+                                                        </HBox>
+                                                    </HBox>
+                                                    <!-- <Text text = "Chicken" /> -->
+                                                    <!-- </SlideTile> -->
+                                                    <Label
+                                                        text="Chicken"
+                                                        design="Bold"
+                                                        class="bdi1 img"
+                                                    />
+                                                </VBox>
+
+                                                <VBox>
+                                                    <!-- <SlideTile
+                                                    class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                > -->
+                                                    <HBox class="outer">
+                                                        <GenericTile
+                                                            backgroundImage="https://b.zmtcdn.com/data/dish_images/c2f22c42f7ba90d81440a88449f4e5891634806087.png"
+                                                            press="onClickMCourse"
+                                                            class="sapUiTinyMarginBegin sapUiTinyMarginTop "
+                                                        >
+                                                            <!-- <TileContent
+                                                            footer=""
+                                                        /> -->
+                                                        </GenericTile>
+
+                                                        <HBox class="inner">
+                                                            <GenericTile
+                                                                backgroundImage="https://i.pinimg.com/236x/97/9f/5e/979f5e4d9e33a878981352cd2d87df00.jpg"
+                                                                press="onClickMCourse"
+                                                                class="sapUiTinyMarginBegin sapUiTinyMarginTop "
+                                                            >
+                                                                <!-- <TileContent
+                                                            footer=""
+                                                        /> -->
+                                                            </GenericTile>
+                                                        </HBox>
+                                                    </HBox>
+
+                                                    <!-- </SlideTile> -->
+                                                    <Label
+                                                        text="Rolls"
+                                                        design="Bold"
+                                                        class="bdi1 img"
+                                                    />
+                                                </VBox>
+
+                                                <VBox>
+                                                    <!-- <SlideTile
+                                                    class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                > -->
+
+                                                    <HBox class="outer">
+                                                        <GenericTile
+                                                            backgroundImage="https://b.zmtcdn.com/data/dish_images/d5ab931c8c239271de45e1c159af94311634805744.png"
+                                                            press="onClickItalian"
+                                                            class="sapUiTinyMarginBegin sapUiTinyMarginTop "
+                                                        >
+                                                            <!-- <TileContent
+                                                            footer=""
+                                                        /> -->
+                                                        </GenericTile>
+
+                                                        <HBox class="inner">
+                                                            <GenericTile
+                                                                backgroundImage="https://i.pinimg.com/236x/af/b6/45/afb645727524aa1624d320a0a8b4a3ca.jpg"
+                                                                press="onClickItalian"
+                                                                class="sapUiTinyMarginBegin sapUiTinyMarginTop "
+                                                            >
+                                                                <!-- <TileContent
+                                                            footer=""
+                                                        /> -->
+                                                            </GenericTile>
+                                                        </HBox>
+                                                    </HBox>
+                                                    <!-- </SlideTile> -->
+
+                                                    <Label
+                                                        text="Cake"
+                                                        design="Bold"
+                                                        class="bdi1 img"
+                                                    />
+                                                </VBox>
+
+                                                <VBox>
+                                                    <!-- <SlideTile
+                                                    class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                > -->
+
+                                                    <HBox class="outer">
+                                                        <GenericTile
+                                                            backgroundImage="https://b.zmtcdn.com/data/dish_images/c953e5ca07150e9a51f8b21102e20f7e1634805157.png"
+                                                            press="onClickDessert"
+                                                            class="sapUiTinyMarginBegin sapUiTinyMarginTop "
+                                                        >
+                                                            <!-- <TileContent
+                                                            footer=""
+                                                        /> -->
+                                                        </GenericTile>
+
+                                                        <HBox class="inner">
+                                                            <GenericTile
+                                                                backgroundImage="https://i.pinimg.com/236x/b3/e2/db/b3e2db6302a576779ed7e1f1e845e20f.jpg"
+                                                                press="onClickDessert"
+                                                                class="sapUiTinyMarginBegin sapUiTinyMarginTop "
+                                                            >
+                                                                <!-- <TileContent
+                                                            footer=""
+                                                        /> -->
+                                                            </GenericTile>
+                                                        </HBox>
+                                                    </HBox>
+                                                    <!-- </SlideTile> -->
+                                                    <Label
+                                                        text="Chole Bhature"
+                                                        design="Bold"
+                                                        class="bdi1 img"
+                                                    />
+                                                </VBox>
+
+                                                <VBox>
+                                                    <!-- <SlideTile
+                                                    class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                > -->
+                                                    <!-- <GenericTile
+                                                        backgroundImage="https://b.zmtcdn.com/data/o2_assets/52eb9796bb9bcf0eba64c643349e97211634401116.png"
+                                                        press="onClickDessert"
+                                                        class="sapUiTinyMarginBegin sapUiTinyMarginTop "
+                                                    >
+                                                        <TileContent
+                                                            footer=""
+                                                        />
+                                                    </GenericTile> -->
+
+                                                    <HBox class="outer">
+                                                        <GenericTile
+                                                            backgroundImage="https://b.zmtcdn.com/data/o2_assets/52eb9796bb9bcf0eba64c643349e97211634401116.png"
+                                                            press="onClickDessert"
+                                                            class="sapUiTinyMarginBegin sapUiTinyMarginTop "
+                                                        >
+                                                            <!-- <TileContent
+                                                            footer=""
+                                                        /> -->
+                                                        </GenericTile>
+
+                                                        <HBox class="inner">
+                                                            <GenericTile
+                                                                backgroundImage="https://i.pinimg.com/236x/bc/54/5c/bc545c4796c7665529d55eae56116ceb.jpg"
+                                                                press="onClickDessert"
+                                                                class="sapUiTinyMarginBegin sapUiTinyMarginTop "
+                                                            >
+                                                                <!-- <TileContent
+                                                            footer=""
+                                                        /> -->
+                                                            </GenericTile>
+                                                        </HBox>
+                                                    </HBox>
+                                                    <!-- </SlideTile> -->
+                                                    <Label
+                                                        text="Thali"
+                                                        design="Bold"
+                                                        class="bdi1 img"
+                                                    />
+                                                </VBox>
+
+                                                <VBox>
+                                                    <!-- <SlideTile
+                                                    class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                > -->
+                                                    <!-- <GenericTile
+                                                        backgroundImage="https://b.zmtcdn.com/data/dish_images/d19a31d42d5913ff129cafd7cec772f81639737697.png"
+                                                        press="onClickDessert"
+                                                        class="sapUiTinyMarginBegin sapUiTinyMarginTop "
+                                                    >
+                                                        <TileContent
+                                                            footer=""
+                                                        />
+                                                    </GenericTile> -->
+
+                                                    <HBox class="outer">
+                                                        <GenericTile
+                                                            backgroundImage="https://b.zmtcdn.com/data/dish_images/d19a31d42d5913ff129cafd7cec772f81639737697.png"
+                                                            press="onClickDessert"
+                                                            class="sapUiTinyMarginBegin sapUiTinyMarginTop "
+                                                        >
+                                                            <!-- <TileContent
+                                                            footer=""
+                                                        /> -->
+                                                        </GenericTile>
+
+                                                        <HBox class="inner">
+                                                            <GenericTile
+                                                                backgroundImage="https://i.pinimg.com/236x/14/aa/31/14aa31e4d702771ea2b02983fdb4353f.jpg"
+                                                                press="onClickDessert"
+                                                                class="sapUiTinyMarginBegin sapUiTinyMarginTop "
+                                                            >
+                                                                <!-- <TileContent
+                                                            footer=""
+                                                        /> -->
+                                                            </GenericTile>
+                                                        </HBox>
+                                                    </HBox>
+                                                    <!-- </SlideTile> -->
+                                                    <Label
+                                                        text="Biryani"
+                                                        design="Bold"
+                                                        class="bdi1 img"
+                                                    />
+                                                </VBox>
+
+                                                <VBox>
+                                                    <!-- <SlideTile
+                                                    class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                > -->
+                                                    <!-- <GenericTile
+                                                        backgroundImage="https://b.zmtcdn.com/data/dish_images/ccb7dc2ba2b054419f805da7f05704471634886169.png"
+                                                        press="onClickDessert"
+                                                        class="sapUiTinyMarginBegin sapUiTinyMarginTop "
+                                                    >
+                                                        <TileContent
+                                                            footer=""
+                                                        />
+                                                    </GenericTile> -->
+
+                                                    <HBox class="outer">
+                                                        <GenericTile
+                                                            backgroundImage="https://b.zmtcdn.com/data/dish_images/ccb7dc2ba2b054419f805da7f05704471634886169.png"
+                                                            press="onClickDessert"
+                                                            class="sapUiTinyMarginBegin sapUiTinyMarginTop "
+                                                        >
+                                                            <!-- <TileContent
+                                                            footer=""
+                                                        /> -->
+                                                        </GenericTile>
+
+                                                        <HBox class="inner">
+                                                            <GenericTile
+                                                                backgroundImage="https://i.pinimg.com/236x/f6/68/f5/f668f5eed18b0db9fa827d202b8b7bff.jpg"
+                                                                press="onClickDessert"
+                                                                class="sapUiTinyMarginBegin sapUiTinyMarginTop "
+                                                            >
+                                                                <!-- <TileContent
+                                                            footer=""
+                                                        /> -->
+                                                            </GenericTile>
+                                                        </HBox>
+                                                    </HBox>
+                                                    <!-- </SlideTile> -->
+                                                    <Label
+                                                        text="Burger"
+                                                        design="Bold"
+                                                        class="bdi1 img"
+                                                    />
+                                                </VBox>
+
+                                                <VBox>
+                                                    <!-- <SlideTile
+                                                    class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                > -->
+                                                    <!-- <GenericTile
+                                                        backgroundImage="https://b.zmtcdn.com/data/dish_images/e44c42ff4b60b025225c8691ef9735b11635781903.png"
+                                                        press="onClickDessert"
+                                                        class="sapUiTinyMarginBegin sapUiTinyMarginTop "
+                                                    >
+                                                        <TileContent
+                                                            footer=""
+                                                        />
+                                                    </GenericTile> -->
+
+                                                    <HBox class="outer">
+                                                        <GenericTile
+                                                            backgroundImage="https://b.zmtcdn.com/data/dish_images/e44c42ff4b60b025225c8691ef9735b11635781903.png"
+                                                            press="onClickDessert"
+                                                            class="sapUiTinyMarginBegin sapUiTinyMarginTop "
+                                                        >
+                                                            <!-- <TileContent
+                                                            footer=""
+                                                        /> -->
+                                                        </GenericTile>
+
+                                                        <HBox class="inner">
+                                                            <GenericTile
+                                                                backgroundImage="https://i.pinimg.com/236x/55/4a/5a/554a5a5317990ae40ac910c7ace9d1dc.jpg"
+                                                                press="onClickDessert"
+                                                                class="sapUiTinyMarginBegin sapUiTinyMarginTop "
+                                                            >
+                                                                <!-- <TileContent
+                                                            footer=""
+                                                        /> -->
+                                                            </GenericTile>
+                                                        </HBox>
+                                                    </HBox>
+                                                    <!-- </SlideTile> -->
+                                                    <Label
+                                                        text="Paneer"
+                                                        design="Bold"
+                                                        class="bdi1 img"
+                                                    />
+                                                </VBox>
+
+                                                <VBox>
+                                                    <!-- <SlideTile
+                                                    class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                > -->
+                                                    <!-- <GenericTile
+                                                        backgroundImage="https://b.zmtcdn.com/data/o2_assets/5dbdb72a48cf3192830232f6853735301632716604.png"
+                                                        press="onClickDessert"
+                                                        class="sapUiTinyMarginBegin sapUiTinyMarginTop "
+                                                    >
+                                                        <TileContent
+                                                            footer=""
+                                                        />
+                                                    </GenericTile> -->
+
+                                                    <HBox class="outer">
+                                                        <GenericTile
+                                                            backgroundImage="https://b.zmtcdn.com/data/o2_assets/5dbdb72a48cf3192830232f6853735301632716604.png"
+                                                            press="onClickDessert"
+                                                            class="sapUiTinyMarginBegin sapUiTinyMarginTop "
+                                                        >
+                                                            <!-- <TileContent
+                                                            footer=""
+                                                        /> -->
+                                                        </GenericTile>
+
+                                                        <HBox class="inner">
+                                                            <GenericTile
+                                                                backgroundImage="https://i.pinimg.com/236x/70/92/c7/7092c7ff02e7eff95d96f8341fa02b9c.jpg"
+                                                                press="onClickDessert"
+                                                                class="sapUiTinyMarginBegin sapUiTinyMarginTop "
+                                                            >
+                                                                <!-- <TileContent
+                                                            footer=""
+                                                        /> -->
+                                                            </GenericTile>
+                                                        </HBox>
+                                                    </HBox>
+                                                    <!-- </SlideTile> -->
+                                                    <Label
+                                                        text="Momos"
+                                                        design="Bold"
+                                                        class="bdi1 img"
+                                                    />
+                                                </VBox>
+
+                                                <VBox>
+                                                    <!-- <SlideTile
+                                                    class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                > -->
+                                                    <!-- <GenericTile
+                                                        backgroundImage="https://b.zmtcdn.com/data/dish_images/91c554bcbbab049353a8808fc970e3b31615960315.png"
+                                                        press="onClickDessert"
+                                                        class="sapUiTinyMarginBegin sapUiTinyMarginTop "
+                                                    >
+                                                        <TileContent
+                                                            footer=""
+                                                        />
+                                                    </GenericTile> -->
+
+                                                    <HBox class="outer">
+                                                        <GenericTile
+                                                            backgroundImage="https://b.zmtcdn.com/data/dish_images/91c554bcbbab049353a8808fc970e3b31615960315.png"
+                                                            press="onClickDessert"
+                                                            class="sapUiTinyMarginBegin sapUiTinyMarginTop "
+                                                        >
+                                                            <!-- <TileContent
+                                                            footer=""
+                                                        /> -->
+                                                        </GenericTile>
+
+                                                        <HBox class="inner">
+                                                            <GenericTile
+                                                                backgroundImage="https://i.pinimg.com/236x/4c/81/d3/4c81d3e953064844d7291f98c2ebbd72.jpg"
+                                                                press="onClickDessert"
+                                                                class="sapUiTinyMarginBegin sapUiTinyMarginTop "
+                                                            >
+                                                                <!-- <TileContent
+                                                            footer=""
+                                                        /> -->
+                                                            </GenericTile>
+                                                        </HBox>
+                                                    </HBox>
+                                                    <!-- </SlideTile> -->
+                                                    <Label
+                                                        text="Noodles"
+                                                        design="Bold"
+                                                        class="bdi1 img"
+                                                    />
+                                                </VBox>
+                                            </Carousel>
+                                        </l:HorizontalLayout>
+                                    </f:content>
+                                </f:SimpleForm>
+
+                                <f:SimpleForm
+                                    id="SimpleFormDisplay480233"
+                                    class="form1"
+                                    editable="false"
+                                    layout="ResponsiveGridLayout"
+                                    title="Desserts: "
+                                    enableScrolling="true"
+                                >
+                                    <f:content>
+                                        <HBox class="slider">
+                                        
+                                            <HBox class="slide-track">
+                                            <VBox>
+                                                <HBox class="slide">
+                                                    <Image
+                                                        src="https://i.pinimg.com/236x/01/f4/9e/01f49e97a45f702e7d94caad36ad8551.jpg"
+                                                        class="img1"
+                                                    />
+                                                </HBox>
+                                                <!-- <Panel
+				headerText="Rate the Product"
+				accessibleRole="Region"> -->
+				<wt:ProductRating id="rating" width = "50px" class="sapUiSmallMarginBeginEnd" change=".onRatingChange"/>
+		<!-- </Panel> -->
+                                       </VBox>
+                                       <VBox>
+                                                <HBox class="slide">
+                                                    <Image
+                                                        src="https://i.pinimg.com/236x/2f/1c/ae/2f1cae6b98892628cc0a4e68e14fd002.jpg"
+                                                        class="img1"
+                                                    />
+                                                </HBox>
+                                                <wt:ProductRating  class="sapUiSmallMarginBeginEnd" change=".onRatingChange"/>
+                                                </VBox>
+
+                                                <VBox>
+                                                <HBox class="slide">
+                                                    <Image
+                                                        src="https://i.pinimg.com/236x/8d/0b/8a/8d0b8a094d59cba8279ecdc2c0d874cc.jpg"
+                                                        class="img1"
+                                                    />
+                                                </HBox>
+                                                <wt:ProductRating  class="sapUiSmallMarginBeginEnd" change=".onRatingChange"/>
+                                                </VBox>
+
+                                                <VBox>
+                                                <HBox class="slide">
+                                                    <Image
+                                                        src="https://i.pinimg.com/236x/10/92/88/1092886d5cc06b3f235782012f75ae4c.jpg"
+                                                        class="img1"
+                                                    />
+                                                </HBox>
+                                                <wt:ProductRating  class="sapUiSmallMarginBeginEnd" change=".onRatingChange"/>
+                                                </VBox>
+                                                <VBox>
+                                                <HBox class="slide">
+                                                    <Image
+                                                        src="https://i.pinimg.com/236x/43/5e/02/435e0293a049f5f8d810671025826c82.jpg"
+                                                        class="img1"
+                                                    />
+                                                </HBox>
+                                                 <wt:ProductRating  class="sapUiSmallMarginBeginEnd" change=".onRatingChange"/>
+                                                 </VBox>
+                                                 <VBox>
+                                                <HBox class="slide">
+                                                    <Image
+                                                        src="https://i.pinimg.com/236x/46/f7/e0/46f7e0974543d263d228887c0518cf43.jpg"
+                                                        class="img1"
+                                                    />
+                                                </HBox>
+                                                 <wt:ProductRating  class="sapUiSmallMarginBeginEnd" change=".onRatingChange"/>
+                                                 </VBox>
+                                                 <VBox>
+                                                <HBox class="slide">
+                                                    <Image
+                                                        src="https://i.pinimg.com/236x/59/88/b1/5988b1f9a0a75837198ab4562e83b884.jpg"
+                                                        class="img1"
+                                                    />
+                                                </HBox>
+                                                 <wt:ProductRating  class="sapUiSmallMarginBeginEnd" change=".onRatingChange"/>
+                                                 </VBox>
+
+                                                 <VBox>
+                                                <HBox class="slide">
+                                                    <Image
+                                                        src="https://i.pinimg.com/236x/2b/cd/e0/2bcde01c461efca0ebea2e5a4b804c5b.jpg"
+                                                        class="img1"
+                                                    />
+                                                </HBox>
+                                                 <wt:ProductRating  class="sapUiSmallMarginBeginEnd" change=".onRatingChange"/>
+                                                 </VBox>
+                                                 <VBox>
+                                                <HBox class="slide">
+                                                    <Image
+                                                        src="https://i.pinimg.com/236x/90/07/9e/90079e6eb7fecbf871f914f785435d90.jpg"
+                                                        class="img1"
+                                                    />
+                                                </HBox>
+                                                 <wt:ProductRating  class="sapUiSmallMarginBeginEnd" change=".onRatingChange"/>
+                                                 </VBox>
+                                                 <VBox>
+                                                <HBox class="slide">
+                                                    <Image
+                                                        src="https://i.pinimg.com/236x/01/f4/9e/01f49e97a45f702e7d94caad36ad8551.jpg"
+                                                        class="img1"
+                                                    />
+                                                </HBox>
+                                                 <wt:ProductRating  class="sapUiSmallMarginBeginEnd" change=".onRatingChange"/>
+                                                 </VBox>
+                                                 <VBox>
+                                                <HBox class="slide">
+                                                    <Image
+                                                        src="https://i.pinimg.com/236x/32/de/30/32de30c899b809061aa74630025af784.jpg"
+                                                        class="img1"
+                                                    />
+                                                </HBox>
+                                                 <wt:ProductRating  class="sapUiSmallMarginBeginEnd" change=".onRatingChange"/>
+                                                 </VBox>
+                                            </HBox>
+                                        </HBox>
+                                    </f:content>
+                                </f:SimpleForm>
+
+                                <f:SimpleForm
+                                    id="SimpleFormDisplay48023"
+                                    class="form1"
+                                    editable="false"
+                                    layout="ResponsiveGridLayout"
+                                    title="Top Brands for You: "
+                                    enableScrolling="true"
+                                >
+                                    <f:content>
+                                        <ScrollContainer>
+                                            <l:HorizontalLayout>
+                                                <VBox>
+                                                    <!-- <SlideTile
+                                                        class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                    > -->
+                                                    <GenericTile
+                                                        backgroundImage="https://b.zmtcdn.com/data/brand_creatives/logos/bb30587d1148b6ab628a61945f64bf88_1625164768.png"
+                                                        press="onClickStarter"
+                                                        class="sapUiMediumMarginBegin sapUiMediumMarginTop img"
+                                                    >
+                                                        <TileContent
+                                                            footer=""
+                                                        />
+                                                    </GenericTile>
+                                                    <!-- </SlideTile> -->
+                                                    <Label
+                                                        text="McDonald's"
+                                                        design="Bold"
+                                                        class="bdi1"
+                                                    />
+                                                </VBox>
+
+                                                <VBox>
+                                                    <!-- <SlideTile
+                                                        class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                    > -->
+                                                    <GenericTile
+                                                        backgroundImage="https://b.zmtcdn.com/data/brand_creatives/logos/1a985408ca7ad8fd097f2c47db9c5cb6_1611252699.png"
+                                                        press="onClickMCourse"
+                                                        class="sapUiMediumMarginBegin sapUiMediumMarginTop img"
+                                                    >
+                                                        <TileContent
+                                                            footer=""
+                                                        />
+                                                    </GenericTile>
+                                                    <!-- </SlideTile> -->
+                                                    <Label
+                                                        text="Domino's Pizza"
+                                                        design="Bold"
+                                                        class="bdi1"
+                                                    />
+                                                </VBox>
+
+                                                <VBox>
+                                                    <!-- <SlideTile
+                                                        class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                    > -->
+                                                    <GenericTile
+                                                        backgroundImage="https://b.zmtcdn.com/data/brand_creatives/logos/6a11fd0f30c9fd9ceaff2f5b21f61d23_1617187857.png"
+                                                        press="onClickItalian"
+                                                        class="sapUiMediumMarginBegin sapUiMediumMarginTop img"
+                                                    >
+                                                        <TileContent
+                                                            footer=""
+                                                        />
+                                                    </GenericTile>
+                                                    <!-- </SlideTile> -->
+                                                    <Label
+                                                        text="Burger King"
+                                                        design="Bold"
+                                                        class="bdi1"
+                                                    />
+                                                </VBox>
+
+                                                <VBox>
+                                                    <!-- <SlideTile
+                                                        class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                    > -->
+                                                    <GenericTile
+                                                        backgroundImage="https://b.zmtcdn.com/data/brand_creatives/logos/22529ff52d41a4aa3b36ac1e7e0c0db3_1605099406.png"
+                                                        press="onClickDessert"
+                                                        class="sapUiMediumMarginBegin sapUiMediumMarginTop img"
+                                                    >
+                                                        <TileContent
+                                                            footer=""
+                                                        />
+                                                    </GenericTile>
+                                                    <!-- </SlideTile> -->
+                                                    <Label
+                                                        text="Haldiram's"
+                                                        design="Bold"
+                                                        class="bdi1"
+                                                    />
+                                                </VBox>
+
+                                                <VBox>
+                                                    <!-- <SlideTile
+                                                        class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                    > -->
+                                                    <GenericTile
+                                                        backgroundImage="https://b.zmtcdn.com/data/brand_creatives/logos/9302c59eca94abbee01aec9acf9305f6_1676471786.png"
+                                                        press="onClickDessert"
+                                                        class="sapUiMediumMarginBegin sapUiMediumMarginTop img"
+                                                    >
+                                                        <TileContent
+                                                            footer=""
+                                                        />
+                                                    </GenericTile>
+                                                    <!-- </SlideTile> -->
+                                                    <Label
+                                                        text="Subway"
+                                                        design="Bold"
+                                                        class="bdi1"
+                                                    />
+                                                </VBox>
+
+                                                <VBox>
+                                                    <!-- <SlideTile
+                                                        class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                    > -->
+                                                    <GenericTile
+                                                        backgroundImage="https://b.zmtcdn.com/data/brand_creatives/logos/466f8fc74274145f3b21795c3d21816d_1589433692.png"
+                                                        press="onClickDessert"
+                                                        class="sapUiMediumMarginBegin sapUiMediumMarginTop img"
+                                                    >
+                                                        <TileContent
+                                                            footer=""
+                                                        />
+                                                    </GenericTile>
+                                                    <!-- </SlideTile> -->
+                                                    <Label
+                                                        text="KFC"
+                                                        design="Bold"
+                                                        class="bdi1"
+                                                    />
+                                                </VBox>
+
+                                                <VBox>
+                                                    <!-- <SlideTile
+                                                        class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                    > -->
+                                                    <GenericTile
+                                                        backgroundImage="https://b.zmtcdn.com/data/brand_creatives/logos/d46560ce3d7b84605cab233c5abc65f3_1625165852.png"
+                                                        press="onClickDessert"
+                                                        class="sapUiMediumMarginBegin sapUiMediumMarginTop img"
+                                                    >
+                                                        <TileContent
+                                                            footer=""
+                                                        />
+                                                    </GenericTile>
+                                                    <!-- </SlideTile> -->
+                                                    <Label
+                                                        text="Pizza Hut"
+                                                        design="Bold"
+                                                        class="bdi1"
+                                                    />
+                                                </VBox>
+
+                                                <VBox>
+                                                    <!-- <SlideTile
+                                                        class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                    > -->
+                                                    <GenericTile
+                                                        backgroundImage="https://b.zmtcdn.com/data/brand_creatives/logos/215b8925e9cfd139d3b89a1739cf52cb_1568353874.png?output-format=webp"
+                                                        press="onClickDessert"
+                                                        class="sapUiMediumMarginBegin sapUiMediumMarginTop img"
+                                                    >
+                                                        <TileContent
+                                                            footer=""
+                                                        />
+                                                    </GenericTile>
+                                                    <!-- </SlideTile> -->
+                                                    <Label
+                                                        text="Big Wong"
+                                                        design="Bold"
+                                                        class="bdi1"
+                                                    />
+                                                </VBox>
+
+                                                <VBox>
+                                                    <!-- <SlideTile
+                                                        class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                    > -->
+                                                    <GenericTile
+                                                        backgroundImage="https://b.zmtcdn.com/data/brand_creatives/logos/7646da8be63a93ff0e4a3d1662ed0215_1570258129.png?output-format=webp"
+                                                        press="onClickDessert"
+                                                        class="sapUiMediumMarginBegin sapUiMediumMarginTop img"
+                                                    >
+                                                        <TileContent
+                                                            footer=""
+                                                        />
+                                                    </GenericTile>
+                                                    <!-- </SlideTile> -->
+                                                    <Label
+                                                        text="Gianis - Ice Cream"
+                                                        design="Bold"
+                                                        class="bdi1"
+                                                    />
+                                                </VBox>
+
+                                                <VBox>
+                                                    <!-- <SlideTile
+                                                        class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                    > -->
+                                                    <GenericTile
+                                                        backgroundImage="https://b.zmtcdn.com/data/brand_creatives/logos/3a58b67479fd290ff96996002438736e_1672389206.png?output-format=webp"
+                                                        press="onClickDessert"
+                                                        class="sapUiMediumMarginBegin sapUiMediumMarginTop img"
+                                                    >
+                                                        <TileContent
+                                                            footer=""
+                                                        />
+                                                    </GenericTile>
+                                                    <!-- </SlideTile> -->
+                                                    <Label
+                                                        text="Wow! Momo"
+                                                        design="Bold"
+                                                        class="bdi1"
+                                                    />
+                                                </VBox>
+
+                                                <VBox>
+                                                    <!-- <SlideTile
+                                                        class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                    > -->
+                                                    <GenericTile
+                                                        backgroundImage="https://b.zmtcdn.com/data/brand_creatives/logos/b39fb9a7762ce2a19750d676cf5ffcde_1669622335.png?output-format=webp"
+                                                        press="onClickDessert"
+                                                        class="sapUiMediumMarginBegin sapUiMediumMarginTop img"
+                                                    >
+                                                        <TileContent
+                                                            footer=""
+                                                        />
+                                                    </GenericTile>
+                                                    <!-- </SlideTile> -->
+                                                    <Label
+                                                        text="NIC Icecream"
+                                                        design="Bold"
+                                                        class="bdi1"
+                                                    />
+                                                </VBox>
+
+                                                <VBox>
+                                                    <!-- <SlideTile
+                                                        class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                    > -->
+                                                    <GenericTile
+                                                        backgroundImage="https://b.zmtcdn.com/data/brand_creatives/logos/fa4139e7d51bd8d9ceeac682e1d69b73_1674886897.png?output-format=webp"
+                                                        press="onClickDessert"
+                                                        class="sapUiMediumMarginBegin sapUiMediumMarginTop img"
+                                                    >
+                                                        <TileContent
+                                                            footer=""
+                                                        />
+                                                    </GenericTile>
+                                                    <!-- </SlideTile> -->
+                                                    <Label
+                                                        text="Ovenstory Pizza"
+                                                        design="Bold"
+                                                        class="bdi1"
+                                                    />
+                                                </VBox>
+
+                                                <VBox>
+                                                    <!-- <SlideTile
+                                                        class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                    > -->
+                                                    <GenericTile
+                                                        backgroundImage="https://b.zmtcdn.com/data/brand_creatives/logos/d46560ce3d7b84605cab233c5abc65f3_1625165852.png"
+                                                        press="onClickDessert"
+                                                        class="sapUiMediumMarginBegin sapUiMediumMarginTop img"
+                                                    >
+                                                        <TileContent
+                                                            footer=""
+                                                        />
+                                                    </GenericTile>
+                                                    <!-- </SlideTile> -->
+                                                    <Label
+                                                        text="Pizza Hut"
+                                                        design="Bold"
+                                                        class="bdi1"
+                                                    />
+                                                </VBox>
+                                            </l:HorizontalLayout>
+
+                                            <!-- <SlideTile class="sapUiTinyMarginBegin sapUiTinyMarginTop">
+                            <GenericTile backgroundImage="https://b.zmtcdn.com/data/o2_assets/d0bd7c9405ac87f6aa65e31fe55800941632716575.png" press="onClickDessert">
+                                <TileContent footer="Dessert" />
+                            </GenericTile>
+                        </SlideTile> -->
+                                        </ScrollContainer>
+                                    </f:content>
+                                </f:SimpleForm>
+
+                                <tnt:NavigationList
+                                    id="navigationList"
+                                    width="1250px"
+                                >
+                                    <tnt:NavigationListItem
+                                        text="Invisible Section"
+                                        icon="sap-icon://employee"
+                                        visible="false"
+                                    >
+                                        <tnt:NavigationListItem
+                                            text="Bakery food near me . Beverages food near me . Biryani food near me.
+            Chinese food near me . Continental food near me . Desserts food near me . Italian food near me .
+             South Indian food near me . Street food near me           
+            "
+                                        />
+                                        <tnt:NavigationListItem
+                                            text="Kebab food near me . Mithai food near me . Momos food near me . Mughlai food near me . North Indian food near me . Pasta food near me . Pizza food near me . Rolls food near me . 
+             Sandwich food near me . Shake food near me"
+                                        />
+                                    </tnt:NavigationListItem>
+                                    <tnt:NavigationListItem
+                                        text="Popular Cuisines near me"
+                                        icon="sap-icon://building"
+                                    >
+                                        <tnt:NavigationListItem
+                                            text="Bakery food near me . Beverages food near me . Biryani food near me.
+            Chinese food near me . Continental food near me . Desserts food near me . Italian food near me .
+             South Indian food near me . Street food near me
+            "
+                                        />
+                                        <tnt:NavigationListItem
+                                            text="Kebab food near me . Mithai food near me . Momos food near me . Mughlai food near me . North Indian food near me . Pasta food near me . Pizza food near me . Rolls food near me . 
+             Sandwich food near me . Shake food near me ."
+                                        />
+                                    </tnt:NavigationListItem>
+                                </tnt:NavigationList>
+
+                                <tnt:NavigationList
+                                    id="navigationListt"
+                                    width="1250px"
+                                >
+                                    <tnt:NavigationListItem
+                                        text="Invisible Section"
+                                        icon="sap-icon://employee"
+                                        visible="false"
+                                    >
+                                        <tnt:NavigationListItem
+                                            text="Bakeries near me . Bars near me . Beverage Shops near me . 
+            Bhojanalya near me . Cafés near me . Casual Dining near me . Clubs near me . 
+            Cocktail Bars near me . Confectioneries near me . Dessert Parlors near me . Dhabas near me . 
+            "
+                                        />
+                                        <tnt:NavigationListItem
+                                            text="  Fine Dining near me . Food Courts near me . Food Trucks near me . Irani Cafes near me .
+              Kiosks near me . Lounges near me . Meat Shops near me . Microbreweries near me . Paan Shop near me .
+              Pubs near me . Quick Bites near me . Sweet Shops near me "
+                                        />
+                                    </tnt:NavigationListItem>
+                                    <tnt:NavigationListItem
+                                        text="Popular restaurant types near me"
+                                        icon="sap-icon://building"
+                                    >
+                                        <tnt:NavigationListItem
+                                            text="Bakeries near me . Bars near me . Beverage Shops near me . 
+            Bhojanalya near me . Cafés near me . Casual Dining near me . Clubs near me . 
+            Cocktail Bars near me . Confectioneries near me . Dessert Parlors near me . Dhabas near me . 
+            "
+                                        />
+                                        <tnt:NavigationListItem
+                                            text="  Fine Dining near me . Food Courts near me . Food Trucks near me . Irani Cafes near me .
+              Kiosks near me . Lounges near me . Meat Shops near me . Microbreweries near me . Paan Shop near me .
+              Pubs near me . Quick Bites near me . Sweet Shops near me "
+                                        />
+                                    </tnt:NavigationListItem>
+                                </tnt:NavigationList>
+
+                                <tnt:NavigationList
+                                    id="navigationListtt"
+                                    width="1250px"
+                                >
+                                    <tnt:NavigationListItem
+                                        text="Invisible Section"
+                                        icon="sap-icon://employee"
+                                        visible="false"
+                                    >
+                                        <tnt:NavigationListItem
+                                            text="Delhi NCR .  Kolkata  .  Mumbai  .   Bengaluru  .   Pune  .   Hyderabad   .
+            Chennai  .  Lucknow   .   Kochi  .   Jaipur  .   Ahmedabad   .  Chandigarh   .   Goa   .    Indore             
+            "
+                                        />
+                                    </tnt:NavigationListItem>
+                                    <tnt:NavigationListItem
+                                        text="Cities We deliver to"
+                                        icon="sap-icon://building"
+                                    >
+                                        <tnt:NavigationListItem
+                                            text="Delhi NCR .  Kolkata  .  Mumbai  .   Bengaluru  .   Pune  .   Hyderabad   .
+            Chennai  .  Lucknow   .   Kochi  .   Jaipur  .   Ahmedabad   .  Chandigarh   .   Goa   .    Indore  
+            "
+                                        />
+                                    </tnt:NavigationListItem>
+                                </tnt:NavigationList>
+
+                                <f:SimpleForm
+                                    id="SimpleFormDisplay4802345"
+                                    editable="false"
+                                    layout="ResponsiveGridLayout"
+                                    title="Food App "
+                                    class="detailform"
+                                >
+                                    <f:content>
+                                        <!-- <l:HorizontalLayout> -->
+                                        <!-- <HBox> -->
+                                        <!-- <headerContent>
+<Text text = "India" />
+</headerContent> -->
+                                        <!-- <Toolbar>
+ <Text text = "India" />
+            </Toolbar> -->
+                                        <Toolbar>
+                                            <ToolbarSpacer class="Ind" />
+                                            <HBox>
+                                                <MenuButton
+                                                    text="Country"
+                                                    buttonMode="Split"
+                                                    defaultAction="onDefaultAction"
+                                                    beforeMenuOpen="onBeforeMenuOpen"
+                                                >
+                                                    <menu>
+                                                        <Menu
+                                                            itemSelected="onMenuAction"
+                                                        >
+                                                            <MenuItem
+                                                                text="India"
+                                                                icon="https://i.pinimg.com/236x/bb/d6/9f/bbd69f57d58b2eecc0623ef175f6cf60.jpg"
+                                                            />
+                                                            <MenuItem
+                                                                text="Afganistan"
+                                                                icon="https://i.pinimg.com/236x/c6/fa/e9/c6fae9a81535ea3d8761316fba76a8cf.jpg"
+                                                            />
+                                                            <MenuItem
+                                                                text="Pakistan"
+                                                                icon="https://i.pinimg.com/236x/cf/ed/75/cfed7577f189779d83349e9c4e1a59ff.jpg"
+                                                            />
+                                                            <MenuItem
+                                                                text="Italy"
+                                                                icon="sap-icon://chalkboard"
+                                                            />
+                                                            <MenuItem
+                                                                text="Turkey"
+                                                                icon="sap-icon://display"
+                                                            />
+                                                            <MenuItem
+                                                                text="Australia"
+                                                                icon="sap-icon://chalkboard"
+                                                            />
+                                                            <MenuItem
+                                                                text="Poland"
+                                                                icon="sap-icon://display"
+                                                            />
+                                                            <MenuItem
+                                                                text="Malaysia"
+                                                                icon="sap-icon://chalkboard"
+                                                            />
+                                                            <MenuItem
+                                                                text="Sri Lanka"
+                                                                icon="sap-icon://display"
+                                                            />
+                                                            <MenuItem
+                                                                text="USA"
+                                                                icon="sap-icon://chalkboard"
+                                                            />
+                                                            <MenuItem
+                                                                text="South Africa"
+                                                                icon="sap-icon://display"
+                                                            />
+                                                        </Menu>
+                                                    </menu>
+                                                </MenuButton>
+
+                                                <MenuButton
+                                                    text="Language"
+                                                    buttonMode="Split"
+                                                    defaultAction="onDefaultAction"
+                                                    beforeMenuOpen="onBeforeMenuOpen"
+                                                >
+                                                    <menu>
+                                                        <Menu
+                                                            itemSelected="onMenuAction"
+                                                        >
+                                                            <MenuItem
+                                                                text="English"
+                                                                icon="sap-icon://chalkboard"
+                                                            />
+                                                            <MenuItem
+                                                                text="Polish"
+                                                                icon="sap-icon://chalkboard"
+                                                            />
+                                                            <MenuItem
+                                                                text="Italian"
+                                                                icon="sap-icon://display"
+                                                            />
+                                                            <MenuItem
+                                                                text="Hindi"
+                                                                icon="sap-icon://chalkboard"
+                                                            />
+                                                            <MenuItem
+                                                                text="Indonesian"
+                                                                icon="sap-icon://chalkboard"
+                                                            />
+                                                            <MenuItem
+                                                                text="Espanol"
+                                                                icon="sap-icon://display"
+                                                            />
+                                                            <MenuItem
+                                                                text="Vietnamese"
+                                                                icon="sap-icon://chalkboard"
+                                                            />
+                                                        </Menu>
+                                                    </menu>
+                                                </MenuButton>
+                                            </HBox>
+                                            <!-- <MenuButton text="Country" width="8rem" buttonMode="Split" defaultAction="onDefaultAction" beforeMenuOpen="onBeforeMenuOpen">
+                        <menu>
+                            <Menu itemSelected="onMenuAction">
+                                <MenuItem text="India" icon="https://i.pinimg.com/236x/bb/d6/9f/bbd69f57d58b2eecc0623ef175f6cf60.jpg" />
+                                <MenuItem text="Afganistan" icon="https://i.pinimg.com/236x/c6/fa/e9/c6fae9a81535ea3d8761316fba76a8cf.jpg" />
+                                <MenuItem text="Pakistan" icon="https://i.pinimg.com/236x/cf/ed/75/cfed7577f189779d83349e9c4e1a59ff.jpg" />
+                            </Menu>
+                        </menu>
+                    </MenuButton>
+                     <MenuButton text="English" width="8rem" buttonMode="Split" defaultAction="onDefaultAction" beforeMenuOpen="onBeforeMenuOpen">
+                        <menu>
+                            <Menu itemSelected="onMenuAction">
+                                <MenuItem text="India" icon="https://i.pinimg.com/236x/bb/d6/9f/bbd69f57d58b2eecc0623ef175f6cf60.jpg" />
+                                <MenuItem text="Afganistan" icon="https://i.pinimg.com/236x/c6/fa/e9/c6fae9a81535ea3d8761316fba76a8cf.jpg" />
+                                <MenuItem text="Pakistan" icon="https://i.pinimg.com/236x/cf/ed/75/cfed7577f189779d83349e9c4e1a59ff.jpg" />
+                            </Menu>
+                        </menu>
+                    </MenuButton> -->
+                                        </Toolbar>
+                                        <VBox>
+                                            <Label
+                                                text="For Restaurants"
+                                                design="Bold"
+                                            />
+                                            <Text text="Partner With Us" />
+                                            <Text text="Apps For You" />
+                                            <!-- <Text text = "Work With Us" /> 
+                            <Text text = "Contact Us" /> -->
+                                        </VBox>
+
+                                        <core:Title text="" />
+                                        <core:Title text="" />
+                                        <VBox>
+                                            <Text text="" />
+                                            <Label
+                                                text="FOR ENTERPRISES"
+                                                design="Bold"
+                                            />
+
+                                            <Text text="Apps For Enterprise" />
+                                            <!-- <Text text = "Blog" /> 
+                            <Text text = "Work With Us" /> 
+                            <Text text = "Contact Us" /> -->
+                                        </VBox>
+                                        <!-- <core:Title text="" /> -->
+                                        <VBox>
+                                            <Label
+                                                text="LEARN MORE"
+                                                design="Bold"
+                                            />
+                                            <Text text=" Privacy" />
+                                            <Text text="Security" />
+                                            <Text text="Terms" />
+                                            <Text text="Sitemap" />
+                                        </VBox>
+                                        <core:Title text="" />
+                                        <VBox>
+                                            <Label
+                                                text="SOCIAL LINKS"
+                                                design="Bold"
+                                            />
+                                            <HBox>
+                                                <Image
+                                                    src="https://museumandgallery.org/wp-content/uploads/2020/03/Facebook-Icon-Facebook-Logo-Social-Media-Fb-Logo-Facebook-Logo-PNG-and-Vector-with-Transparent-Background-for-Free-Download.png"
+                                                    width="35px"
+                                                    press="onclickfb"
+                                                />
+                                                <Image
+                                                    src=" https://cdn.pixabay.com/photo/2016/08/09/17/52/instagram-1581266__340.jpg"
+                                                    width="35px"
+                                                    press="onclickinsta"
+                                                />
+                                                <Image
+                                                    src="https://seeklogo.com/images/T/twitter-logo-7249D46199-seeklogo.com.png "
+                                                    width="35px"
+                                                    press="onclicktwitter"
+                                                />
+                                            </HBox>
+                                            <VBox>
+                                                <Image
+                                                    src="https://b.zmtcdn.com/data/webuikit/9f0c85a5e33adb783fa0aef667075f9e1556003622.png "
+                                                    width="120px"
+                                                    press=""
+                                                />
+                                                <Text text="" />
+                                                <Image
+                                                    src="https://b.zmtcdn.com/data/webuikit/23e930757c3df49840c482a8638bf5c31556001144.png "
+                                                    width="120px"
+                                                    press=""
+                                                />
+                                            </VBox>
+
+                                            <!-- <Link text="https://www.facebook.com/login/" />
+                                            <Link text="https://www.instagram.com/accounts/login/" />
+                                            <Link text="https://www.youtube.com/login/" />
+                                            <Link text = "https://twitter.com/" /> -->
+                                        </VBox>
+                                        <!-- <core:Title text="" />
+                          <VBox>
+                            <Label text = "About App" design = "bold" /> 
+                            <Text text = "Who We Are" /> 
+                            <Text text = "Blog" /> 
+                            <Text text = "Work With Us" /> 
+                            <Text text = "Contact Us" />
+                            </VBox> -->
+                                        <!-- </HBox> -->
+                                        <!-- </l:HorizontalLayout> -->
+                                    </f:content>
+                                </f:SimpleForm>
+                            </IconTabFilter>
+                            <IconTabFilter
+                                key="Per Inf"
+                                text="Dining Out"
+                            >
+                                <!-- <Toolbar > -->
+                                <VBox>
+                                    <Label
+                                        text="Collections"
+                                        design="Bold"
+                                        class="lbl1"
+                                    />
+                                    <Text text="" />
+                                    <HBox>
+                                        <Label
+                                            text="Explore curated lists of top restaurants, cafes, pubs, and bars in Delhi NCR, based on trends"
+                                            class="lbl11"
+                                        />
+                                        <!-- <Text text ="" />
+                             <Text text ="" />  -->
+                                        <!-- <ToolbarSpacer/><ToolbarSpacer/> -->
+
+                                        <Link
+                                            text="All Collections in Delhi NCR ->"
+                                            class="lnk1"
+                                        />
+                                    </HBox>
+                                </VBox>
+                                <!-- </Toolbar> -->
+                                <l:HorizontalLayout>
+                                    <Carousel
+                                        height="auto"
+                                        width="80rem"
+                                        pages="1"
+                                    >
+                                        <customLayout>
+                                            <CarouselLayout
+                                                visiblePagesCount="3"
+                                            />
+                                        </customLayout>
+                                        <VBox>
+                                            <!-- <SlideTile
+                                                        class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                    > -->
+                                            <GenericTile
+                                                backgroundImage="https://b.zmtcdn.com/data/collections/16e3a8b363d4592a72b2c4f486c63fb8_1678096853.jpg?output-format=webp"
+                                                press="onClickMCourse"
+                                                class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                frameType="TwoByOne"
+                                            >
+                                                <TileContent footer="" />
+                                            </GenericTile>
+                                            <!-- </SlideTile> -->
+                                        </VBox>
+
+                                        <VBox>
+                                            <!-- <SlideTile
+                                                        class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                    > -->
+                                            <GenericTile
+                                                backgroundImage="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRUbjCs6r601B9zki1zJ3tJeC5qL6lAu2pnn-64RfomHuDkfZiw"
+                                                press="onClickMCourse"
+                                                class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                frameType="TwoByOne"
+                                            >
+                                                <TileContent footer="" />
+                                            </GenericTile>
+                                            <!-- </SlideTile> -->
+                                        </VBox>
+
+                                        <VBox>
+                                            <!-- <SlideTile
+                                                        class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                    > -->
+                                            <GenericTile
+                                                backgroundImage="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcT07pbC8EBsAX89wETpHJr00gXujPj6ZMZRS-LFLwlRq1PtfZXm"
+                                                press="onClickMCourse"
+                                                class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                frameType="TwoByOne"
+                                            >
+                                                <TileContent footer="" />
+                                            </GenericTile>
+                                            <!-- </SlideTile> -->
+                                        </VBox>
+
+                                        <VBox>
+                                            <!-- <SlideTile
+                                                        class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                    > -->
+                                            <GenericTile
+                                                backgroundImage="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSY1mGsepcW7MGEHBOYFx_qGqZT8vvRf5HMxPB-wGTk9lnUJ8ta"
+                                                press="onClickMCourse"
+                                                class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                frameType="TwoByOne"
+                                            >
+                                                <TileContent footer="" />
+                                            </GenericTile>
+                                            <!-- </SlideTile> -->
+                                        </VBox>
+
+                                        <VBox>
+                                            <!-- <SlideTile
+                                                        class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                    > -->
+                                            <GenericTile
+                                                backgroundImage="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgQ6DQSWd-X35bZQLx0mimA6qxLA7rssZZsIbSeGo8rpsc9c8m"
+                                                press="onClickMCourse"
+                                                class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                frameType="TwoByOne"
+                                            >
+                                                <TileContent footer="" />
+                                            </GenericTile>
+                                            <!-- </SlideTile> -->
+                                        </VBox>
+
+                                        <VBox>
+                                            <!-- <SlideTile
+                                                        class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                    > -->
+                                            <GenericTile
+                                                backgroundImage="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSzvMBTpdcFlefZY-IHwZw6RDfgBuS3zX1PAJUSaq2p76cuqGeN"
+                                                press="onClickMCourse"
+                                                class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                frameType="TwoByOne"
+                                            >
+                                                <TileContent footer="" />
+                                            </GenericTile>
+                                            <!-- </SlideTile> -->
+                                        </VBox>
+
+                                        <VBox>
+                                            <!-- <SlideTile
+                                                        class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                    > -->
+                                            <GenericTile
+                                                backgroundImage="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS2e4LE-MZg9yOM6dqM9sjojDWlaXLaQVMMGES1JdY-tYmhkRmj"
+                                                press="onClickMCourse"
+                                                class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                frameType="TwoByOne"
+                                            >
+                                                <TileContent footer="" />
+                                            </GenericTile>
+                                            <!-- </SlideTile> -->
+                                        </VBox>
+                                    </Carousel>
+                                </l:HorizontalLayout>
+
+                                <VBox>
+                                    <HBox>
+                                        <Label
+                                            text="Best Dining Restaurants near you"
+                                            class="lbl111"
+                                        />
+                                    </HBox>
+                                </VBox>
+                                <!-- </Toolbar> -->
+                                <l:HorizontalLayout>
+                                    <Carousel
+                                        height="auto"
+                                        width="80rem"
+                                        pages="1"
+                                    >
+                                        <customLayout>
+                                            <CarouselLayout
+                                                visiblePagesCount="3"
+                                            />
+                                        </customLayout>
+                                        <VBox>
+                                            <!-- <SlideTile
+                                                        class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                    > -->
+                                            <GenericTile
+                                                backgroundImage="https://b.zmtcdn.com/data/pictures/chains/2/1212/0fada51155b5fff789bf182ea730a0d0_featured_v2.jpg?output-format=webp"
+                                                press="onClickMCourse"
+                                                class="sapUiTinyMarginBegin sapUiTinyMarginTop "
+                                                frameType="TwoByOne"
+                                            >
+                                                <TileContent
+                                                    footer="Barbeque Nation"
+                                                />
+                                            </GenericTile>
+                                            <!-- </SlideTile> -->
+                                        </VBox>
+
+                                        <VBox>
+                                            <!-- <SlideTile
+                                                        class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                    > -->
+                                            <GenericTile
+                                                backgroundImage="https://b.zmtcdn.com/data/pictures/1/20053521/e740839c636bdc877647edeffa51db2d_featured_v2.jpg?output-format=webp"
+                                                press="onClickMCourse"
+                                                class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                frameType="TwoByOne"
+                                            >
+                                                <TileContent
+                                                    footer="Madam Mayo"
+                                                />
+                                            </GenericTile>
+                                            <!-- </SlideTile> -->
+                                        </VBox>
+
+                                        <VBox>
+                                            <!-- <SlideTile
+                                                        class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                    > -->
+                                            <GenericTile
+                                                backgroundImage="https://b.zmtcdn.com/data/pictures/chains/9/18710659/255f4082bb4938a422f179fb22997ecb_featured_v2.jpg?output-format=webp"
+                                                press="onClickMCourse"
+                                                class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                frameType="TwoByOne"
+                                            >
+                                                <TileContent
+                                                    footer="Sagar Ratna"
+                                                />
+                                            </GenericTile>
+                                            <!-- </SlideTile> -->
+                                        </VBox>
+
+                                        <VBox>
+                                            <!-- <SlideTile
+                                                        class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                    > -->
+                                            <GenericTile
+                                                backgroundImage="https://b.zmtcdn.com/data/pictures/0/306520/1f98a4f5309d57dffea70e4a824a3f5f_featured_v2.jpg?output-format=webp"
+                                                press="onClickMCourse"
+                                                class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                frameType="TwoByOne"
+                                            >
+                                                <TileContent
+                                                    footer="Creme Castle"
+                                                />
+                                            </GenericTile>
+                                            <!-- </SlideTile> -->
+                                        </VBox>
+
+                                        <VBox>
+                                            <!-- <SlideTile
+                                                        class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                    > -->
+                                            <GenericTile
+                                                backgroundImage="https://b.zmtcdn.com/data/pictures/chains/1/931/b732d42207b1b2957e2847e15e77dd64_featured_v2.jpg?output-format=webp"
+                                                press="onClickMCourse"
+                                                class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                frameType="TwoByOne"
+                                            >
+                                                <TileContent footer="KFC" />
+                                            </GenericTile>
+                                            <!-- </SlideTile> -->
+                                        </VBox>
+
+                                        <VBox>
+                                            <!-- <SlideTile
+                                                        class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                    > -->
+                                            <GenericTile
+                                                backgroundImage="https://b.zmtcdn.com/data/pictures/chains/3/17953943/bcd93bc713bd5261b455c85e79b286af_featured_v2.jpg?output-format=webp"
+                                                press="onClickMCourse"
+                                                class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                frameType="TwoByOne"
+                                            >
+                                                <TileContent
+                                                    footer="Burger Club"
+                                                />
+                                            </GenericTile>
+                                            <!-- </SlideTile> -->
+                                        </VBox>
+
+                                        <VBox>
+                                            <!-- <SlideTile
+                                                        class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                    > -->
+                                            <GenericTile
+                                                backgroundImage="https://b.zmtcdn.com/data/pictures/9/20605169/0acb2cd46d9f4ab8656b26bed36826ce_featured_v2.jpg"
+                                                press="onClickMCourse"
+                                                class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                frameType="TwoByOne"
+                                            >
+                                                <TileContent
+                                                    footer="Banarasi Kulhad"
+                                                />
+                                            </GenericTile>
+                                            <!-- </SlideTile> -->
+                                        </VBox>
+                                    </Carousel>
+                                </l:HorizontalLayout>
+                            </IconTabFilter>
+                            <IconTabFilter
+                                key="Per Inf"
+                                text="NightLife"
+                            >
+                                <!-- <Label text="Night Life Details go here....!" /> -->
+
+                                <VBox>
+                                    <Label
+                                        text="Collections"
+                                        design="Bold"
+                                        class="lbl1"
+                                    />
+                                    <Text text="" />
+                                    <HBox>
+                                        <Label
+                                            text="Explore curated lists of top restaurants, cafes, pubs, and bars in Delhi NCR, based on trends"
+                                            class="lbl11"
+                                        />
+                                        <!-- <Text text ="" />
+                             <Text text ="" />  -->
+                                        <!-- <ToolbarSpacer/><ToolbarSpacer/> -->
+
+                                        <Link
+                                            text="All Collections in Delhi NCR ->"
+                                            class="lnk1"
+                                        />
+                                    </HBox>
+                                </VBox>
+                                <!-- </Toolbar> -->
+                                <l:HorizontalLayout>
+                                    <!-- <Carousel
+                                        height="auto"
+                                        width="80rem"
+                                        pages="1"
+                                    >
+                                        <customLayout>
+                                            <CarouselLayout
+                                                visiblePagesCount="3"
+                                            />
+                                        </customLayout> -->
+                                    <VBox>
+                                        <!-- <SlideTile
+                                                        class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                    > -->
+                                        <HBox>
+                                            <GenericTile
+                                                backgroundImage="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYLkA2du_mKfqUqscnWVxAGyNPTuayVlueEnR0Yhx1ubcoHFbf"
+                                                press="onClickMCourse"
+                                                class="sapUiTinyMarginBegin sapUiTinyMarginTop sapMBtnInner11 "
+                                                frameType="TwoByOne"
+                                            >
+                                                <TileContent footer="" />
+                                            </GenericTile>
+                                            <!-- </SlideTile> -->
+                                            <!-- </VBox> -->
+
+                                            <!-- <VBox> -->
+                                            <!-- <SlideTile
+                                                        class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                    > -->
+                                            <GenericTile
+                                                backgroundImage="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSKJtb_OtBXRw_3bXgOJYnX7K7m9rdFsv6OmtVioEoq3oUxiuRi"
+                                                press="onClickMCourse"
+                                                class="sapUiTinyMarginBegin sapUiTinyMarginTop sapMBtnInner11"
+                                                frameType="TwoByOne"
+                                            >
+                                                <TileContent footer="" />
+                                            </GenericTile>
+                                            <!-- </SlideTile> -->
+                                            <!-- </VBox> -->
+
+                                            <!-- <VBox> -->
+                                            <!-- <SlideTile
+                                                        class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                    > -->
+                                            <GenericTile
+                                                backgroundImage="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSy34W2bXRJcbMYM_NLxy4CyR35eHVpuK3M-2WWpxJXhzkt2viR"
+                                                press="onClickMCourse"
+                                                class="sapUiTinyMarginBegin sapUiTinyMarginTop sapMBtnInner11"
+                                                frameType="TwoByOne"
+                                            >
+                                                <TileContent footer="" />
+                                            </GenericTile>
+                                        </HBox>
+                                        <!-- </SlideTile> -->
+                                        <!-- </VBox> -->
+
+                                        <!-- <VBox> -->
+                                        <!-- <SlideTile
+                                                        class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                    > -->
+                                        <HBox>
+                                            <GenericTile
+                                                backgroundImage="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR_lHQ6L7iUO1u7S9e8F9OSNiKfRJiai2Pkc-5duLVufj0_c4_k"
+                                                press="onClickMCourse"
+                                                class="sapUiTinyMarginBegin sapUiTinyMarginTop sapMBtnInner11"
+                                                frameType="TwoByOne"
+                                            >
+                                                <TileContent footer="" />
+                                            </GenericTile>
+                                            <!-- </SlideTile> -->
+                                            <!-- </VBox> -->
+                                            <!-- </HBox> -->
+                                            <!-- <HBox> -->
+                                            <!-- <VBox> -->
+                                            <!-- <SlideTile
+                                                        class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                    > -->
+                                            <GenericTile
+                                                backgroundImage="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTBDcx8yD2nBZ2W0hxiOi-ErQG0Hme7b3YM9jrv3gPZ687IBcN8"
+                                                press="onClickMCourse"
+                                                class="sapUiTinyMarginBegin sapUiTinyMarginTop sapMBtnInner11"
+                                                frameType="TwoByOne"
+                                            >
+                                                <TileContent footer="" />
+                                            </GenericTile>
+                                            <!-- </SlideTile> -->
+                                            <!-- </VBox> -->
+
+                                            <!-- <VBox> -->
+                                            <!-- <SlideTile
+                                                        class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                    > -->
+                                            <GenericTile
+                                                backgroundImage="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQAZqtfau_2YRkJQvD3lhtGl-POwKaaSAPL_3Ynyd6b62LRb0fr"
+                                                press="onClickMCourse"
+                                                class="sapUiTinyMarginBegin sapUiTinyMarginTop sapMBtnInner11"
+                                                frameType="TwoByOne"
+                                            >
+                                                <TileContent footer="" />
+                                            </GenericTile>
+                                            <!-- </SlideTile> -->
+                                            <!-- </VBox> -->
+
+                                            <!-- <VBox> -->
+                                            <!-- <SlideTile
+                                                        class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                    > -->
+                                            <!-- <GenericTile
+                                                backgroundImage="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQWC0Qm3i7-tu2jGcMlX6BHLGNMxqFEZVilUQ5jbdNRLMnZ8MQ6"
+                                                press="onClickMCourse"
+                                                class="sapUiTinyMarginBegin sapUiTinyMarginTop sapMBtnInner1"
+                                                frameType="TwoByOne"
+                                            >
+                                                <TileContent footer="" />
+                                            </GenericTile> -->
+                                            <!-- </SlideTile> -->
+                                            <!-- <GenericTile
+                                                backgroundImage="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRAL-sow-9ZqBP2DPAUqkfXTLSYxaRiee3ChDGB40F7GurR3qHA"
+                                                press="onClickMCourse"
+                                                class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                                frameType="TwoByOne"
+                                            >
+                                                <TileContent footer="" />
+                                            </GenericTile> -->
+                                        </HBox>
+                                    </VBox>
+                                    <!-- </Carousel> -->
+                                </l:HorizontalLayout>
+                            </IconTabFilter>
+                        </items>
+                    </IconTabBar>
+                </VBox>
+
+                <!-- <VBox>
+            <Table
+            id="table1"
+            mode="MultiSelect"
+            sticky="ColumnHeaders,HeaderToolbar"
+            alternateRowColors="true"
+            inset="true"
+            items="{Data1>/results}"
+        >
+            <columns>
+                <Column demandPopin="true">
+                    <Text text="Bukrs" />
+                </Column>
+
+                <Column demandPopin="true">
+                    <Text text=" Kunnr" />
+                </Column>
+
+                <Column demandPopin="true">
+                    <Text text="Land1" />
+                </Column>
+
+                <Column demandPopin="true">
+                    <Text text=" Werks" />
+                </Column>
+
+                <Column demandPopin="true">
+                    <Text text="Name1" />
+                </Column>
+
+                <Column demandPopin="true">
+                    <Text text="Stras" />
+                </Column>
+
+                <Column demandPopin="true">
+                    <Text text="StatusCode" />
+                </Column>
+
+                <Column demandPopin="true">
+                    <Text text="StatusMsg" />
+                </Column>
+            </columns>
+
+            <items>
+                <ColumnListItem>
+                    <cells>
+                        <Input
+                            value="{Data1>Bukrs}"
+                            editable="false"
+                            id="idBurks"
+                        />
+
+                        <Input
+                            value="{Data1>Kunnr}"
+                            editable="false"
+                            id="idKunnr"
+                        />
+
+                        <Input
+                            value="{Data1>Land1}"
+                            editable="false"
+                            id="idLand1"
+                        />
+
+                        <Input
+                            value="{Data1>Werks}"
+                            editable="false"
+                            id="idWerks"
+                        />
+
+                        <Input
+                            value="{Data1>Name1}"
+                            editable="false"
+                            id="idName1"
+                        />
+
+                        <Input
+                            value="{Data1>Stras}"
+                            editable="false"
+                            id="idStras"
+                        />
+
+                        <Input
+                            value="{Data1>StatusCode}"
+                            editable="false"
+                            id="idSttsCode"
+                        />
+
+                        <Input
+                            value="{Data1>StatusMsg}"
+                            editable="false"
+                            id="idSttsMsg"
+                        />
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+        </VBox> -->
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

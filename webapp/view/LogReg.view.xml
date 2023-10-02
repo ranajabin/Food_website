@@ -1,0 +1,271 @@
+<mvc:View
+    controllerName="customerapp.customerodataapp.controller.LogReg"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:c="sap.ui.core"
+    xmlns:t="sap.ui.table"
+    xmlns:f="sap.ui.layout.form"
+    height="100%"
+>
+    <Page
+        title="Login-Register"
+        enableScrolling="true"
+        class="sapUiResponsivePadding--header sapUiResponsivePadding--footer body2"
+        titleAlignment="Center"
+        showNavButton="true"
+        navButtonPress="onNavBack"
+    >
+        <headerContent>
+            <Button
+                icon="sap-icon://log"
+                tooltip="Logout"
+                text="{i18n>logout}"
+                press="onPressLog"
+            />
+        </headerContent>
+
+        <content>
+            <VBox fitContainer="true">
+                <IconTabBar
+                    upperCase="true"
+                    expandable="false"
+                    applyContentPadding="true"
+                    stretchContentHeight="true"
+                    class="sapUiResponsiveContentPadding"
+                >
+                    <items>
+                        <IconTabFilter
+                            key="Login"
+                            text="Login"
+                            icon="sap-icon://visits"
+                            visible="{=${Data1>/login} === 'lg' || ${Data1>/login} === 'Rl'}"
+                        >
+                            <VBox
+                                alignContent="Center"
+                                alignItems="Center"
+                            >
+                                <!-- <FlexBox height="100px" > -->
+                                <f:SimpleForm
+                                    editable="true"
+                                    alignItems="Center"
+                                    alignContent="Center"
+                                    width="350px"
+                                    title=""
+                                    class=".sapMFlexBoxBGTransparent .myBox2 "
+                                >
+                                    <f:content class="myBox3">
+                                        <VBox
+                                            alignContent="Center"
+                                            alignItems="Center"
+                                            class="myBox1"
+                                        >
+                                            <Text text=" " />
+                                            <Text text="" />
+                                            <Text
+                                                text="{i18n>signin}"
+                                                class="myText1"
+                                            />
+                                            <Text text="" />
+                                            <!-- <Input value="{Data1>/results/0/AppUsrid}" placeholder="ID" id = "_iduser" width="200px" class = "inpt1" /> -->
+                                            <Input
+                                                value=""
+                                                placeholder="Customer Number"
+                                                type="Number"
+                                                id="_iduser"
+                                                width="200px"
+                                                valueState="None"
+                                                class="inpt1"
+                                            />
+                                            <Input
+                                                type="Password"
+                                                value=""
+                                                id="_idpwd"
+                                                placeholder="password"
+                                                width="200px"
+                                                valueState="None"
+                                                class="inpt1"
+                                            />
+                                            <Text text="" />
+                                            <Button
+                                                text="{i18n>signin}"
+                                                type="Emphasized"
+                                                press="onpress"
+                                                class="myCustomButton"
+                                                width="200px"
+                                            />
+                                            <Text text="" />
+                                            <Label text="{i18n>account}" />
+                                            <Button
+                                                text="{i18n>register}"
+                                                type="Emphasized"
+                                                press="onPressReg"
+                                                class="myCustomButton"
+                                                width="200px"
+                                            />
+
+                                            <!-- <VBox>
+                                    <Text text="SignIn with: &#xA;" class="myText" />
+                                    <HBox>
+                                      
+                                        <Image src="https://museumandgallery.org/wp-content/uploads/2020/03/Facebook-Icon-Facebook-Logo-Social-Media-Fb-Logo-Facebook-Logo-PNG-and-Vector-with-Transparent-Background-for-Free-Download.png" width="35px" press="onclickfb"  />
+                                        <Image src=" https://cdn.pixabay.com/photo/2016/08/09/17/52/instagram-1581266__340.jpg" width="35px" press = "onclickinsta" />
+                                        <Image src="https://seeklogo.com/images/T/twitter-logo-7249D46199-seeklogo.com.png " width="35px"  press="onclicktwitter" />
+                                        <Text text = "" />
+                                    </HBox>
+                                </VBox> -->
+                                        </VBox>
+                                    </f:content>
+                                </f:SimpleForm>
+                                <!-- </FlexBox> -->
+                            </VBox>
+                        </IconTabFilter>
+                        <IconTabFilter
+                            key="Reg"
+                            text="Register"
+                            icon="sap-icon://request"
+                            visible="{=${Data1>/login} === 'Rl' }"
+                        >
+                            <VBox
+                                alignContent="Center"
+                                alignItems="Center"
+                                class="onvbox1"
+                            >
+                                <f:SimpleForm
+                                    editable="true"
+                                    alignItems="Center"
+                                    alignContent="Center"
+                                    width="350px"
+                                    title=""
+                                    class="formback"
+                                    emptySpanL="4"
+                                    emptySpanM="4"
+                                    columnsM="2"
+                                    columnsL="3"
+                                    columnsXL="4"
+                                >
+                                    <f:content>
+                                        <!--   <Text text="Cancel" press="onpress" />  -->
+
+                                        <VBox
+                                            alignItems="Center"
+                                            class="myBox2"
+                                        >
+                                            <!--  < Button icon="sap-icon//people"  />  -->
+                                            <Text text=" " />
+
+                                            <Text
+                                                text="{i18n>registration}"
+                                                class="myPass3"
+                                            />
+                                            <!--  <Icon src ="sap-icon//person-placeholder" />  -->
+
+                                            <!--  <Label text =" Email/Phone" class = "mylabel3" textAlign="Begin" />  -->
+
+                                            <!-- <Input  placeholder="Username/Email" id="uname1" width="200px" />
+                                <Input type="Password" id="pwd1" placeholder="password" width="200px" />
+                                <Input type="Password" id="pwd2" placeholder="Retype Password" width="200px" />
+                                <Text text = "" />
+                                <Button text="Send" type="Emphasized" id="buttonId" press="onpresend" class = "onpresend" />                               
+                                <Text text = "" /> -->
+
+                                            <Text text="" />
+                                            <Label
+                                                text="{i18n>customernumber}"
+                                            />
+                                            <Input
+                                                value=""
+                                                width="300px"
+                                                id="_idcustnum"
+                                                placeholder="{i18n>customernumber1}"
+                                                type="Number"
+                                                valueState="{ =${Data1>/results/0/Kunnr} === '' ? 'Error' : 'Success'}"
+                                                valueLiveUpdate="true"
+                                            />
+                                            <Label text="{i18n>name}" />
+                                            <Input
+                                                value=""
+                                                width="300px"
+                                                id="_idcustname"
+                                                placeholder="{i18n>name1}"
+                                                valueState="None"
+                                            />
+                                            <!-- <Input value="" width="300px" id = "_idcustname" /> -->
+                                            <Label text="{i18n>email}" />
+                                            <Input
+                                                value=""
+                                                width="300px"
+                                                id="_idcustemail"
+                                                placeholder="{i18n>email1}"
+                                                valueState="None"
+                                            />
+                                            <Label text="{i18n>mobilenum}" />
+                                            <Input
+                                                value=""
+                                                width="300px"
+                                                id="_idcustmob"
+                                                type="Number"
+                                                placeholder="{i18n>mobilenum1}"
+                                                valueState="None"
+                                            />
+                                            <Label text="{i18n>username}" />
+                                            <Input
+                                                value=""
+                                                width="300px"
+                                                id="_idcustid"
+                                                type="Number"
+                                                placeholder="{i18n>username1}"
+                                                valueState="None"
+                                            />
+                                            <Label text="{i18n>Password}" />
+                                            <Input
+                                                value=""
+                                                width="300px"
+                                                id="_idcustpwd"
+                                                placeholder="{i18n>password1}"
+                                                valueState="None"
+                                            />
+                                            <Text text="" />
+                                            <Button
+                                                text="{i18n>Submit}"
+                                                type="Emphasized"
+                                                width="200px"
+                                                press="onPressRegister"
+                                                class="myCustomButton"
+                                            />
+                                            <Text text="" />
+                                            <Button
+                                                text="{i18n>Reset}"
+                                                type="Transparent"
+                                                width="200px"
+                                                press="onPressReset"
+                                            />
+
+                                            <Text text="" />
+
+                                            <Label text="{i18n>account2}" />
+                                            <Link
+                                                text="{i18n>signin}"
+                                                press="onNavNext"
+                                                class="link1"
+                                            />
+                                        </VBox>
+                                    </f:content>
+                                </f:SimpleForm>
+                            </VBox>
+                        </IconTabFilter>
+                    </items>
+                    <content />
+                </IconTabBar>
+            </VBox>
+        </content>
+        <footer>
+            <OverflowToolbar>
+                <content>
+                    <ToolbarSpacer />
+                    <!-- <Button text="Grouped View" />
+					<Button text="Classical Table" /> -->
+                </content>
+            </OverflowToolbar>
+        </footer>
+    </Page>
+</mvc:View>

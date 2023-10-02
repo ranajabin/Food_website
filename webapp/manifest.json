@@ -1,0 +1,183 @@
+{
+    "_version": "1.49.0",
+    "sap.app": {
+        "id": "customerapp.customerodataapp",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:basic",
+            "version": "1.9.6",
+            "toolsId": "3944f468-d2a3-42af-b150-4c7d8cd4938c"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/ZCUSTOMAPP_SRV/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            }
+        },
+        "crossNavigation": {
+            "inbounds": {
+                "customerapp-customerodataapp-inbound": {
+                    "signature": {
+                        "parameters": {},
+                        "additionalParameters": "allowed"
+                    },
+                    "semanticObject": "C001_ZCust",
+                    "action": "display",
+                    "title": "{{flpTitle}}",
+                    "subTitle": "{{flpSubtitle}}",
+                    "icon": ""
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.114.0",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.f": {},
+                "sap.suite.ui.generic.template": {},
+                "sap.ui.comp": {},
+                "sap.ui.generic.app": {},
+                "sap.ui.table": {},
+                "sap.ushell": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "customerapp.customerodataapp.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {}
+            },
+            "RegistrationData": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {}
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "customerapp.customerodataapp.view",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "name": "RouteDetail",
+                    "pattern": ":?query:",
+                    "target": [
+                        "TargetDetail"
+                    ]
+                },
+                {
+                    "name": "Register",
+                    "pattern": "Register",
+                    "view": "Register",
+                    "controlId": "app",
+                    "targetAggregation": "pages"
+                },
+                {
+                    "name": "Login",
+                    "pattern": "Login",
+                    "view": "Login",
+                    "controlId": "app",
+                    "targetAggregation": "pages"
+                },
+                {
+                    "name": "View4",
+                    "pattern": "View4",
+                    "view": "View4",
+                    "controlId": "app",
+                    "targetAggregation": "pages"
+                },
+                {
+                    "name": "LogReg",
+                    "pattern": "LogReg/{loginreg}",
+                    "view": "LogReg",
+                    "controlId": "app",
+                    "targetAggregation": "pages"
+                },
+                {
+                    "name": "Login1",
+                    "pattern": "Login1/{Id}&{password}",
+                    "view": "Login1",
+                    "controlId": "app",
+                    "targetAggregation": "pages"
+                },
+                {
+                    "name": "GetApp",
+                    "pattern": "GetApp",
+                    "view": "GetApp",
+                    "controlId": "app",
+                    "targetAggregation": "pages"
+                }
+            ],
+            "targets": {
+                "TargetDetail": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "Detail",
+                    "viewName": "Detail"
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "customerapp.customerodataapp.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "App"
+        }
+    }
+}

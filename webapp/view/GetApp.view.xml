@@ -1,0 +1,157 @@
+<mvc:View
+    controllerName="customerapp.customerodataapp.controller.GetApp"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:semantic="sap.m.semantic"
+    displayBlock="true"
+    xmlns="sap.m"
+>
+    <Page
+        id="page"
+        title="Food App"
+        titleAlignment="Center"
+        showNavButton="true"
+        navButtonPress="navPressBack"
+    >
+        <headerContent>
+            <HBox>
+                <Button
+                    icon="sap-icon://customer"
+                    tooltip="Next Page"
+                    press="onNavNext"
+                />
+                <MenuButton
+                    text="My Profile"
+                    defaultAction="onDefaultAction"
+                    beforeMenuOpen="onBeforeMenuOpen"
+                >
+                    <menu>
+                        <Menu itemSelected="onMenuAction">
+                            <MenuItem
+                                text="Profile"
+                                press="onPressPrfl"
+                            />
+                            <MenuItem text="Notification" />
+                            <MenuItem
+                                text="Bookmarks"
+                                press="onPressBkmrks"
+                            />
+                            <MenuItem
+                                text="Reviews"
+                                press="onPressRvw"
+                            />
+                            <MenuItem text="Network" />
+                            <MenuItem text="Find Friends" />
+                            <MenuItem text="Settings" />
+                            <MenuItem
+                                text="Log Out"
+                                press="onPressLogout"
+                            />
+                        </Menu>
+                    </menu>
+                </MenuButton>
+            </HBox>
+        </headerContent>
+        <content />
+
+        <SplitContainer>
+            <masterPages>
+                <semantic:MasterPage>
+                    <VBox
+                        alignContent="Center"
+                        alignItems="Center"
+                        width="300px"
+                    >
+                        <!-- <Text text = "WELCOME" /> -->
+                        <Image
+                            src="https://b.zmtcdn.com/data/o2_assets/f773629053b24263e69f601925790f301680693809.png"
+                            width="350px"
+                        />
+                    </VBox>
+                </semantic:MasterPage>
+            </masterPages>
+            <detailPages>
+                <semantic:DetailPage>
+                    <VBox
+                        alignContent="Center"
+                        alignItems="Center"
+                    >
+                        <Label
+                            text="GET THE FOOD APP"
+                            design="Bold"
+                            alignItems="Center"
+                            alignContent="Center"
+                            class="lbl1"
+                        />
+                        <Text
+                            text="We will send you a link, open it on your phone to download the app"
+                        />
+                        <HBox class="sapUiSmallMargin">
+                            <RadioButtonGroup columns = "2">
+                                <RadioButton
+                                id = "_ideml1"
+                                    text="Email"
+                                    selected="true"
+                                    select = "onpressradio1" 
+                                />
+                                <RadioButton text="Phone" id = "_idmob1" select="onpressradio2" />
+                            </RadioButtonGroup>
+                        </HBox>
+                        <HBox>
+                        <VBox>
+                            <Input
+                                id = "_ideml"
+                                type="Email"
+                                placeholder="Email"
+                                width="300px"
+                                visible = "true"
+                                liveChange="onLiveChange"
+                                value = ""
+                            />
+                            <Label text = ""  id = "_idlbl1" />
+                            </VBox>
+                            <VBox>
+                             <Input
+                                type = "Number"
+                                id = "_idmob"
+                                placeholder="phone"
+                                width="300px"
+                                visible = "false"
+                                liveChange="onLiveChange"
+                                value = ""
+
+                            />
+                             <Label text = ""  id = "_idlbl2" class = "lbl" />
+                            </VBox>
+                            <Button
+                                id = "_idbtn"
+                                type="Emphasized"
+                                text="Share App Link"
+                                press="onpresssharelnk"
+                                enabled="true"
+                            />
+                        </HBox>
+                        <Text
+                            text="Download app from"
+                            class="txtdwld"
+                        />
+
+                        <HBox class="imghbx">
+                            <Image
+                                src="https://b.zmtcdn.com/data/webuikit/9f0c85a5e33adb783fa0aef667075f9e1556003622.png "
+                                width="120px"
+                                press=""
+                            />
+                            <Text text="" />
+                            <Image
+                                src="https://b.zmtcdn.com/data/webuikit/23e930757c3df49840c482a8638bf5c31556001144.png "
+                                width="120px"
+                                press=""
+                            />
+                        </HBox>
+                    </VBox>
+                </semantic:DetailPage>
+            </detailPages>
+        </SplitContainer>
+    </Page>
+</mvc:View>

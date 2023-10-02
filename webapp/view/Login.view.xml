@@ -1,0 +1,195 @@
+<mvc:View
+    controllerName="customerapp.customerodataapp.controller.Login"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+>
+    <Page
+        id="page"
+        title="{i18n>title1}"
+        titleAlignment="Center"
+        class="body1"
+    >
+        <!-- <headerContent>
+            <Button
+                icon="sap-icon://navigation-right-arrow"
+                tooltip="Next Page"
+                press="onNavNext"
+            />
+        </headerContent> -->
+        <content>
+            <VBox
+                alignContent="Center"
+                alignItems="Center"
+            >
+                <!-- <FlexBox height="100px" > -->
+                <f:SimpleForm
+                    editable="true"
+                    alignItems="Center"
+                    alignContent="Center"
+                    width="350px"
+                    title=""
+                    class=".sapMFlexBoxBGTransparent .myBox2 "
+                >
+                    <f:content class="myBox3">
+                        <VBox
+                            alignContent="Center"
+                            alignItems="Center"
+                            class="myBox1"
+                        >
+                            <Text text=" " />
+                            <Text text="" />
+                            <Text
+                                text="{i18n>signin}"
+                                class="myText1"
+                            />
+                            <Text text="" />
+                            <!-- <Input value="{Data1>/results/0/AppUsrid}" placeholder="ID" id = "_iduser" width="200px" class = "inpt1" /> -->
+                            <!-- <Input
+                                value=""
+                                placeholder="Customer Number"
+                                type="Number"
+                                id="_iduser"
+                                width="200px"
+                                valueState="None"
+                                class="inpt1"
+                            /> -->
+                            <Input
+                                value=""
+                                placeholder="Customer Name"
+                                id="_idname"
+                                width="200px"
+                                valueState="None"
+                                class="inpt1"
+                            />
+                            <Input
+                                type="Password"
+                                value=""
+                                id="_idpwd"
+                                placeholder="password"
+                                width="200px"
+                                valueState="None"
+                                class="inpt1"
+                                showValueHelp="true"
+                                valueHelpIconSrc="sap-icon://hide"
+                                valueHelpRequest="onShowpwd"
+                            />
+
+                            <Text text="" />
+                            <Button
+                                text="{i18n>signin}"
+                                type="Emphasized"
+                                press="onpress"
+                                class="myCustomButton"
+                                width="200px"
+                            />
+                            <Text text="" />
+                            <Label text="{i18n>account}" />
+                            <Button
+                                text="{i18n>register}"
+                                type="Emphasized"
+                                press="onPressReg"
+                                class="myCustomButton"
+                                width="200px"
+                            />
+
+                            <!-- <VBox>
+                                    <Text text="SignIn with: &#xA;" class="myText" />
+                                    <HBox>
+                                      
+                                        <Image src="https://museumandgallery.org/wp-content/uploads/2020/03/Facebook-Icon-Facebook-Logo-Social-Media-Fb-Logo-Facebook-Logo-PNG-and-Vector-with-Transparent-Background-for-Free-Download.png" width="35px" press="onclickfb"  />
+                                        <Image src=" https://cdn.pixabay.com/photo/2016/08/09/17/52/instagram-1581266__340.jpg" width="35px" press = "onclickinsta" />
+                                        <Image src="https://seeklogo.com/images/T/twitter-logo-7249D46199-seeklogo.com.png " width="35px"  press="onclicktwitter" />
+                                        <Text text = "" />
+                                    </HBox>
+                                </VBox> -->
+                        </VBox>
+                    </f:content>
+                </f:SimpleForm>
+                <!-- </FlexBox> -->
+            </VBox>
+        </content>
+
+        <Table
+            id="table1"
+            mode="MultiSelect"
+            sticky="ColumnHeaders,HeaderToolbar"
+            alternateRowColors="true"
+            inset="true"
+            items="{Data1>/results}"
+        >
+            <columns>
+                <Column demandPopin="true">
+                    <Text text="Customer Number" />
+                </Column>
+
+                <Column demandPopin="true">
+                    <Text text=" Name" />
+                </Column>
+
+                <Column demandPopin="true">
+                    <Text text="E-MailAddress" />
+                </Column>
+
+                <Column demandPopin="true">
+                    <Text text=" First telephone number" />
+                </Column>
+
+                <Column demandPopin="true">
+                    <Text text="UserId" />
+                </Column>
+
+                <Column demandPopin="true">
+                    <Text text="Password" />
+                </Column>
+            </columns>
+
+            <items>
+                <ColumnListItem>
+                    <cells>
+                        <Input
+                            value="{Data1>Kunnr}"
+                            editable="false"
+                            id="idEmpNm"
+                        />
+
+                        <Input
+                            value="{Data1>Name1}"
+                            editable="false"
+                            id="idEmpmob"
+                        />
+
+                        <Input
+                            value="{Data1>SmtpAddr}"
+                            editable="false"
+                            id="idEmpEml"
+                        />
+
+                        <Input
+                            value="{Data1>Telf1}"
+                            editable="false"
+                            id="idEmpDep"
+                        />
+
+                        <Input
+                            value="{Data1>AppUsrid}"
+                            editable="false"
+                            id="idEmpBpay"
+                        />
+
+                        <Input
+                            value="{Data1>Password}"
+                            editable="false"
+                            id="idEmpHra"
+                        />
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+
+        <!-- </content> -->
+    </Page>
+</mvc:View>

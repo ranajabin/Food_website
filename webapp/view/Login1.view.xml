@@ -1,0 +1,914 @@
+<mvc:View
+    controllerName="customerapp.customerodataapp.controller.Login1"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:fiori="sap.ui.webc.fiori"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:semantic="sap.m.semantic"
+    xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+>
+    <Page
+        id="page"
+        title="{i18n>title3}"
+        titleAlignment="Center"
+        showNavButton="true"
+        navButtonPress="navPressBack"
+        class="body3 sapUiResponsiveContentPadding"
+    >
+        <headerContent>
+            <Button
+                icon="sap-icon://navigation-right-arrow"
+                tooltip="Next Page"
+                press="onNavNext"
+            />
+        </headerContent>
+
+        <Toolbar class="sapcompact">
+            <Label
+                text="Food App"
+                class="sapMLabel2"
+                design="Bold"
+            />
+            <ToolbarSpacer />
+
+            <ComboBox
+                selectionChange="handleSelectionChange"
+                selectionFinish="handleSelectionFinish"
+                width="300px"
+                id="_empShftA"
+                visible="true"
+                placeholder="Enter Location"
+                items="{Data1>/results}"
+                icon="sap-icon://location"
+            >
+                <core:Item
+                    key="009"
+                    id="_idStras"
+                    text="{Data1>Stras}"
+                />
+            </ComboBox>
+            <SearchField
+                width="500px"
+                placeholder="search for a restaurant"
+                search="onFilterSearch"
+                id="_idName1"
+            />
+            <Button
+                text="Search"
+                type="Emphasized"
+                press="onSearch"
+            />
+
+            <MenuButton
+                text="{Data1>/0/Name1}"
+                icon="sap-icon://customer"
+                useDefaultActionOnly="true"
+                menuPosition="BeginBottom"
+            >
+                <menu>
+                    <Menu itemSelected="onMenuAction">
+                        <MenuItem
+                            text="Profile"
+                            icon="sap-icon://person-placeholder"
+                        />
+                        <MenuItem
+                            text="Notifications"
+                            icon="sap-icon://ui-notifications"
+                        />
+                        <MenuItem
+                            text="Bookmarks"
+                            icon="sap-icon://bookmark"
+                            press=".onListItemPress"
+                        />
+                        <MenuItem
+                            text="Reviews"
+                            icon="sap-icon://to-be-reviewed"
+                        />
+                        <MenuItem
+                            text="Network"
+                            icon="sap-icon://world"
+                        />
+                        <MenuItem
+                            text="Find Friends"
+                            icon="sap-icon://people-connected"
+                        />
+                        <MenuItem
+                            text="Settings"
+                            icon="sap-icon://action-settings"
+                        />
+                        <MenuItem
+                            text="Log Out"
+                            icon="sap-icon://log"
+                            press="onpresslogout"
+                        />
+                    </Menu>
+                </menu>
+            </MenuButton>
+        </Toolbar>
+
+        <content>
+            <!-- <VBox fitContainer="true"> -->
+
+            <HBox class="hbx1">
+                <f:SimpleForm
+                    width="92rem"
+                    class="vbx1"
+                >
+                    <f:content>
+                        <!-- <HBox class = "hbx1"> -->
+                        <ObjectHeader
+                            icon="https://www.pngitem.com/pimgs/m/627-6275754_chad-profile-pic-profile-photo-circle-png-transparent.png"
+                            iconDensityAware="false"
+                            iconAlt="Your Name"
+                            imageShape="Circle"
+                            responsive="false"
+                            title="{Data1>/0/Name1}"
+                            intro=""
+                            class="sapUiResponsivePadding--header"
+                        >
+                            <!-- <Button text = "Edit Profile" icon = "sap-icon://edit" /> -->
+                            <statuses>
+                                <!-- <Button text = "Edit Profile" icon = "sap-icon://edit" /> -->
+                                <ObjectStatus
+                                    text="Edit Profile"
+                                    icon="sap-icon://edit"
+                                />
+                                <ObjectStatus
+                                    text="0 Reviews"
+                                    state="Error"
+                                />
+                                <ObjectStatus
+                                    text="0 Photos"
+                                    state="Success"
+                                />
+                                <ObjectStatus
+                                    text="0 Followers"
+                                    state="Success"
+                                />
+                            </statuses>
+                        </ObjectHeader>
+                        <!-- </HBox>   -->
+                    </f:content>
+                </f:SimpleForm>
+            </HBox>
+
+            <!-- <Table
+            id="table1"
+            mode="MultiSelect"
+            sticky="ColumnHeaders,HeaderToolbar"
+            alternateRowColors="true"
+            inset="true"
+            items="{Data1>/results}"
+        >
+            <columns>
+                <Column demandPopin="true">
+                    <Text text="Customer Number" />
+                </Column>
+
+                <Column demandPopin="true">
+                    <Text text=" Name" />
+                </Column>
+
+                <Column demandPopin="true">
+                    <Text text="E-MailAddress" />
+                </Column>
+
+                <Column demandPopin="true">
+                    <Text text=" First telephone number" />
+                </Column>
+
+                <Column demandPopin="true">
+                    <Text text="UserId" />
+                </Column>
+
+                <Column demandPopin="true">
+                    <Text text="Password" />
+                </Column>
+            </columns>
+
+            <items>
+                <ColumnListItem>
+                    <cells>
+                        <Input
+                            value="{Data1>Kunnr}"
+                            editable="false"
+                            id="idEmpNm"
+                        />
+
+                        <Input
+                            value="{Data1>Name1}"
+                            editable="false"
+                            id="idEmpmob"
+                        />
+
+                        <Input
+                            value="{Data1>SmtpAddr}"
+                            editable="false"
+                            id="idEmpEml"
+                        />
+
+                        <Input
+                            value="{Data1>Telf1}"
+                            editable="false"
+                            id="idEmpDep"
+                        />
+
+                        <Input
+                            value="{Data1>AppUsrid}"
+                            editable="false"
+                            id="idEmpBpay"
+                        />
+
+                        <Input
+                            value="{Data1>Password}"
+                            editable="false"
+                            id="idEmpHra"
+                        />
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table> -->
+
+            <SplitContainer id="SplitContDemo">
+                <detailPages>
+                    <Page
+                        id="Reviews"
+                        title="Reviews"
+                        titleAlignment="Center"
+                    >
+                        <!-- <Toolbar>
+                            <Button icon="sap-icon://sort" press=".onSortButtonPressed" />
+                        </Toolbar> -->
+
+                        <!-- <f:SimpleForm title="Reviews" class = "formpage">
+                            <f:content> -->
+                        <!-- <Label text="Name1" />
+                                <Input value="" width="45%" /> -->
+                        <VBox
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
+                            <Image
+                                src="https://b.zmtcdn.com/webFrontend/691ad4ad27a5804a3033977d45390c811584432410.png"
+                                width="180px"
+                                height="160px"
+                            />
+                            <Text text="Nothing here yet" />
+                        </VBox>
+
+                        <!-- </f:content>
+                        </f:SimpleForm> -->
+                    </Page>
+
+                    <Page
+                        id="Photos"
+                        title="Photos"
+                        titleAlignment="Center"
+                        backgroundDesign="Solid"
+                        showNavButton="true"
+                        navButtonPress=".onPressDetailBack"
+                    >
+                        <!-- <f:SimpleForm title="Photos" class = "formpage1">
+                            <f:content> -->
+                        <!-- <Label text="Name2" />
+                                <Input value="" width="45%" /> -->
+                        <VBox
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
+                            <Image
+                                src="https://b.zmtcdn.com/webFrontend/1a33af2333871e0c1222a3ee21ea697f1581070577.png"
+                                width="180px"
+                                height="160px"
+                            />
+                            <Text text="Nothing here yet" />
+                        </VBox>
+
+                        <!-- </f:content>
+                        </f:SimpleForm> -->
+                    </Page>
+
+                    <Page
+                        id="Followers"
+                        title="Followers"
+                        titleAlignment="Center"
+                        backgroundDesign="Solid"
+                        showNavButton="true"
+                        navButtonPress=".onPressDetailBack"
+                    >
+                        <!-- <f:SimpleForm title="Followers" class = "formpage2">
+                            <f:content> -->
+                        <!-- <Label text="Name3" />
+                                <Input value="" width="45%" /> -->
+
+                        <VBox
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
+                            <Image
+                                src="https://b.zmtcdn.com/webFrontend/c33e5cd0b755a03f9b2f374b1b8271a91581004801.png"
+                                width="180px"
+                                height="160px"
+                            />
+                            <Text
+                                text="You are not followed by any users yet."
+                            />
+                        </VBox>
+
+                        <!-- </f:content>
+                        </f:SimpleForm> -->
+                    </Page>
+
+                    <Page
+                        id="R_Viewed"
+                        title="Recently Viewed"
+                        titleAlignment="Center"
+                        backgroundDesign="Solid"
+                        showNavButton="true"
+                        navButtonPress=".onPressDetailBack"
+                    >
+                        <!-- <f:SimpleForm title="Recently Viewed Restaurants..">
+                            <f:content> -->
+                        <!-- <Text text = "You can check here recently viewed data" height = "100%" /> -->
+                        <!-- <Label text="Name4" />
+                                <Input value="" width="45%" /> -->
+
+                        <VBox
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
+                            <Image
+                                src="https://b.zmtcdn.com/webFrontend/e8dbf3973a8918dcdf9e7e61daae70f71581003303.png"
+                                width="180px"
+                                height="160px"
+                            />
+                            <Text text="Nothing here yet" />
+                        </VBox>
+
+                        <!-- </f:content>
+                        </f:SimpleForm> -->
+                    </Page>
+
+                    <Page
+                        id="Bookmarks"
+                        title="Bookmarks"
+                        titleAlignment="Center"
+                        backgroundDesign="Solid"
+                        showNavButton="true"
+                        navButtonPress=".onPressDetailBack"
+                    >
+                        <!-- <f:SimpleForm title="Bookmarks">
+                            <f:content> -->
+
+                        <VBox
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
+                            <Image
+                                src="https://b.zmtcdn.com/webFrontend/e8dbf3973a8918dcdf9e7e61daae70f71581003303.png"
+                                width="180px"
+                                height="160px"
+                            />
+                            <Text text="Nothing in your Bookmarks yet." />
+                        </VBox>
+                        <!-- </f:content>
+                        </f:SimpleForm> -->
+                    </Page>
+
+                    <Page
+                        id="Blog_posts"
+                        title="Blog posts"
+                        titleAlignment="Center"
+                        backgroundDesign="Solid"
+                        showNavButton="true"
+                        navButtonPress=".onPressDetailBack"
+                    >
+                        <!-- <f:SimpleForm title="Blog Posts">
+                            <f:content> -->
+                        <!-- <Label text="Name4" />
+                                <Input value="" width="45%" /> -->
+
+                        <VBox
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
+                            <Image
+                                src="https://b.zmtcdn.com/webFrontend/691ad4ad27a5804a3033977d45390c811584432410.png"
+                                width="180px"
+                                height="160px"
+                            />
+                            <Text text="Nothing here yet" />
+                        </VBox>
+
+                        <!-- </f:content>
+                        </f:SimpleForm> -->
+                    </Page>
+
+                    <Page
+                        id="O_history"
+                        title="Order history"
+                        titleAlignment="Center"
+                        backgroundDesign="Solid"
+                        showNavButton="true"
+                        navButtonPress=".onPressDetailBack"
+                    >
+                        <!-- <f:SimpleForm title="Order history">
+                            <f:content> -->
+                        <!-- <Label text="Name4" />
+                                <Input value="" width="45%" /> -->
+
+                        <VBox
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
+                            <Image
+                                src="https://b.zmtcdn.com/webFrontend/96a9a259cfa3dd8e260d65d1f135ab941581004545.png"
+                                width="180px"
+                                height="160px"
+                            />
+                            <Text text="Nothing here yet" />
+                        </VBox>
+
+                        <!-- </f:content>
+                        </f:SimpleForm> -->
+                    </Page>
+
+                    <Page
+                        id="My_Address"
+                        title="My Address"
+                        titleAlignment="Center"
+                        backgroundDesign="Solid"
+                        showNavButton="true"
+                        navButtonPress=".onPressDetailBack"
+                    >
+                        <!-- <f:SimpleForm title="My Address">
+                            <f:content> -->
+                        <!-- <Label text="Name4" />
+                                <Input value="" width="45%" /> -->
+
+                        <VBox
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
+                            <Image
+                                src="https://b.zmtcdn.com/webFrontend/0fe9c098c4a1284e04065bd13bc1dd911581004318.png"
+                                width="180px"
+                                height="160px"
+                            />
+                            <Text text="You haven't added any address yet." />
+                        </VBox>
+
+                        <!-- </f:content>
+                        </f:SimpleForm> -->
+                    </Page>
+
+                    <Page
+                        id="F_Orders"
+                        title="Favourite Orders"
+                        titleAlignment="Center"
+                        backgroundDesign="Solid"
+                        showNavButton="true"
+                        navButtonPress=".onPressDetailBack"
+                    >
+                        <!-- <f:SimpleForm title="Favourite Orders">
+                            <f:content> -->
+                        <!-- <Label text="Name4" />
+                                <Input value="" width="45%" /> -->
+
+                        <VBox
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
+                            <Image
+                                src="https://b.zmtcdn.com/webFrontend/96a9a259cfa3dd8e260d65d1f135ab941581004545.png"
+                                width="180px"
+                                height="160px"
+                            />
+                            <Text text="Nothing here yet" />
+                        </VBox>
+
+                        <!-- </f:content>
+                        </f:SimpleForm> -->
+                    </Page>
+
+                    <Page
+                        id="Z_Credits"
+                        title="Zomato Credits"
+                        titleAlignment="Center"
+                        backgroundDesign="Solid"
+                        showNavButton="true"
+                        navButtonPress=".onPressDetailBack"
+                    >
+                        <!-- <f:SimpleForm title="Zomato Credits">
+                            <f:content> -->
+                        <!-- <Label text="Name4" />
+                                <Input value="" width="45%" /> -->
+
+                        <VBox
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
+                            <Image
+                                src="https://b.zmtcdn.com/webFrontend/96a9a259cfa3dd8e260d65d1f135ab941581004545.png"
+                                width="180px"
+                                height="160px"
+                            />
+                            <Text text="Nothing here yet" />
+                        </VBox>
+
+                        <!-- </f:content>
+                        </f:SimpleForm> -->
+                    </Page>
+
+                    <Page
+                        id="M_Wallets"
+                        title="Manage Wallets"
+                        titleAlignment="Center"
+                        backgroundDesign="Solid"
+                        showNavButton="true"
+                        navButtonPress=".onPressDetailBack"
+                    >
+                        <!-- <f:SimpleForm title="Manage Wallets">
+                            <f:content> -->
+                        <!-- <Label text="Name4" />
+                                <Input value="" width="45%" /> -->
+
+                        <VBox
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
+                            <Image
+                                src="https://b.zmtcdn.com/webFrontend/96a9a259cfa3dd8e260d65d1f135ab941581004545.png"
+                                width="180px"
+                                height="160px"
+                            />
+                            <Text text="Nothing here yet" />
+                        </VBox>
+
+                        <!-- </f:content>
+                        </f:SimpleForm> -->
+                    </Page>
+
+                    <Page
+                        id="M_Cards"
+                        title="Manage Cards"
+                        titleAlignment="Center"
+                        backgroundDesign="Solid"
+                        showNavButton="true"
+                        navButtonPress=".onPressDetailBack"
+                    >
+                        <!-- <f:SimpleForm title="Manage Cards">
+                            <f:content> -->
+                        <!-- <Label text="Name4" />
+                                <Input value="" width="45%" /> -->
+
+                        <VBox
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
+                            <Image
+                                src="https://b.zmtcdn.com/webFrontend/96a9a259cfa3dd8e260d65d1f135ab941581004545.png"
+                                width="180px"
+                                height="160px"
+                            />
+                            <Text text="Nothing here yet" />
+                        </VBox>
+
+                        <!-- </f:content>
+                        </f:SimpleForm> -->
+                    </Page>
+
+                    <Page
+                        id="Y_Bookings"
+                        title="Your Bookings"
+                        titleAlignment="Center"
+                        backgroundDesign="Solid"
+                        showNavButton="true"
+                        navButtonPress=".onPressDetailBack"
+                    >
+                        <!-- <f:SimpleForm title="Your Bookings">
+                            <f:content> -->
+                        <!-- <Label text="Name4" />
+                                <Input value="" width="45%" /> -->
+
+                        <VBox
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
+                            <Image
+                                src="https://b.zmtcdn.com/webFrontend/e8dbf3973a8918dcdf9e7e61daae70f71581003303.png"
+                                width="180px"
+                                height="160px"
+                            />
+                            <Text
+                                text="Lokks Like you don't have any past reservations."
+                            />
+                        </VBox>
+
+                        <!-- </f:content>
+                        </f:SimpleForm> -->
+                    </Page>
+                </detailPages>
+
+                <masterPages>
+                    <Page
+                        id="master"
+                        title=""
+                        titleAlignment="Center"
+                    >
+                        <!-- <List headerText="Students detail" items="{model1>/stud}"> -->
+                        <!-- <fiori:SideNavigation id="sideNavigation">
+<fiori:header text="Work" />
+	<fiori:SideNavigationItem icon="home" text="Home" />  -->
+                        <List
+                            headerText="Activity"
+                            itemPress=".onListItemPress"
+                            key="rootActivity"
+                            icon="sap-icon://employee"
+                        >
+                            <StandardListItem
+                                title="Reviews "
+                                type="Active"
+                                custom:to="Reviews"
+                            />
+                            <StandardListItem
+                                title="Photos"
+                                type="Active"
+                                custom:to="Photos"
+                            />
+                            <StandardListItem
+                                title="Followers "
+                                type="Active"
+                                custom:to="Followers"
+                            />
+                            <StandardListItem
+                                title="Recently Viewed "
+                                type="Active"
+                                custom:to="R_Viewed"
+                            />
+                            <StandardListItem
+                                title="Bookmarks "
+                                type="Active"
+                                custom:to="Bookmarks"
+                            />
+                            <StandardListItem
+                                title="Blog Posts"
+                                type="Active"
+                                custom:to="Blog_posts"
+                            />
+                        </List>
+
+                        <List
+                            headerText="Online Ordering"
+                            itemPress=".onListItemPress"
+                        >
+                            <StandardListItem
+                                title="Order History "
+                                type="Active"
+                                custom:to="O_history"
+                            />
+                            <StandardListItem
+                                title="My Addresses"
+                                type="Active"
+                                custom:to="My_Address"
+                            />
+                            <StandardListItem
+                                title="Favourite Orders "
+                                type="Active"
+                                custom:to="F_Orders"
+                            />
+                        </List>
+
+                        <List
+                            headerText="Payments"
+                            itemPress=".onListItemPress"
+                        >
+                            <!-- <ObjectListItem title="{model1>studname}" number="{model1>age}" intro="{model1>email}" numberState="{=${model1>age} >20 ? 'Success' : 'Error'}" type="Navigation" press="onPressList" /> -->
+                            <StandardListItem
+                                title="Zomato Credits "
+                                type="Active"
+                                custom:to="Z_Credits"
+                            />
+                            <StandardListItem
+                                title="Manage Wallets"
+                                type="Active"
+                                custom:to="M_Wallets"
+                            />
+                            <StandardListItem
+                                title="Manage Cards "
+                                type="Active"
+                                custom:to="M_Cards"
+                            />
+                        </List>
+
+                        <List
+                            headerText="Table Booking"
+                            itemPress=".onListItemPress"
+                        >
+                            <!-- <ObjectListItem title="{model1>studname}" number="{model1>age}" intro="{model1>email}" numberState="{=${model1>age} >20 ? 'Success' : 'Error'}" type="Navigation" press="onPressList" /> -->
+                            <StandardListItem
+                                title="Your Bookings "
+                                type="Active"
+                                custom:to="Y_Bookings"
+                            />
+                        </List>
+                        <!-- </fiori:SideNavigation> -->
+                    </Page>
+                </masterPages>
+            </SplitContainer>
+
+            <f:SimpleForm
+                id="SimpleFormDisplay4802345"
+                editable="false"
+                layout="ResponsiveGridLayout"
+                title="Food App "
+                class="detailform"
+            >
+                <f:content>
+                    <Toolbar>
+                        <ToolbarSpacer class="Ind" />
+                        <HBox>
+                            <MenuButton
+                                text="Country"
+                                buttonMode="Split"
+                                defaultAction="onDefaultAction"
+                                beforeMenuOpen="onBeforeMenuOpen"
+                            >
+                                <menu>
+                                    <Menu itemSelected="onMenuAction">
+                                        <MenuItem
+                                            text="India"
+                                            icon="https://i.pinimg.com/236x/bb/d6/9f/bbd69f57d58b2eecc0623ef175f6cf60.jpg"
+                                        />
+                                        <MenuItem
+                                            text="Afganistan"
+                                            icon="https://i.pinimg.com/236x/c6/fa/e9/c6fae9a81535ea3d8761316fba76a8cf.jpg"
+                                        />
+                                        <MenuItem
+                                            text="Pakistan"
+                                            icon="https://i.pinimg.com/236x/cf/ed/75/cfed7577f189779d83349e9c4e1a59ff.jpg"
+                                        />
+                                        <MenuItem
+                                            text="Italy"
+                                            icon="sap-icon://chalkboard"
+                                        />
+                                        <MenuItem
+                                            text="Turkey"
+                                            icon="sap-icon://display"
+                                        />
+                                        <MenuItem
+                                            text="Australia"
+                                            icon="sap-icon://chalkboard"
+                                        />
+                                        <MenuItem
+                                            text="Poland"
+                                            icon="sap-icon://display"
+                                        />
+                                        <MenuItem
+                                            text="Malaysia"
+                                            icon="sap-icon://chalkboard"
+                                        />
+                                        <MenuItem
+                                            text="Sri Lanka"
+                                            icon="sap-icon://display"
+                                        />
+                                        <MenuItem
+                                            text="USA"
+                                            icon="sap-icon://chalkboard"
+                                        />
+                                        <MenuItem
+                                            text="South Africa"
+                                            icon="sap-icon://display"
+                                        />
+                                    </Menu>
+                                </menu>
+                            </MenuButton>
+
+                            <MenuButton
+                                text="Language"
+                                buttonMode="Split"
+                                defaultAction="onDefaultAction"
+                                beforeMenuOpen="onBeforeMenuOpen"
+                            >
+                                <menu>
+                                    <Menu itemSelected="onMenuAction">
+                                        <MenuItem
+                                            text="English"
+                                            icon="sap-icon://chalkboard"
+                                        />
+                                        <MenuItem
+                                            text="Polish"
+                                            icon="sap-icon://chalkboard"
+                                        />
+                                        <MenuItem
+                                            text="Italian"
+                                            icon="sap-icon://display"
+                                        />
+                                        <MenuItem
+                                            text="Hindi"
+                                            icon="sap-icon://chalkboard"
+                                        />
+                                        <MenuItem
+                                            text="Indonesian"
+                                            icon="sap-icon://chalkboard"
+                                        />
+                                        <MenuItem
+                                            text="Espanol"
+                                            icon="sap-icon://display"
+                                        />
+                                        <MenuItem
+                                            text="Vietnamese"
+                                            icon="sap-icon://chalkboard"
+                                        />
+                                    </Menu>
+                                </menu>
+                            </MenuButton>
+                        </HBox>
+                    </Toolbar>
+                    <VBox>
+                        <Label
+                            text="About Food App"
+                            design="Bold"
+                        />
+                        <Text text="Who we are" />
+                        <Text text="Blog" />
+                        <Text text="Work with us" />
+                        <Text text="Report Fraud" />
+                        <Text text="Contact Us" />
+                    </VBox>
+
+                    <core:Title text="" />
+                    <core:Title text="" />
+                    <VBox>
+                        <Label
+                            text="For Restaurants"
+                            design="Bold"
+                        />
+                        <Text text="Partner With Us" />
+                        <Text text="Apps For You" />
+                    </VBox>
+
+                    <VBox>
+                        <Label
+                            text="FOR ENTERPRISES"
+                            design="bold"
+                        />
+                        <Text text="Apps For Enterprise" />
+                    </VBox>
+                    <!-- <core:Title text="" /> -->
+                    <VBox>
+                        <Label
+                            text="LEARN MORE"
+                            design="bold"
+                        />
+                        <Text text=" Privacy" />
+                        <Text text="Security" />
+                        <Text text="Terms" />
+                        <Text text="Sitemap" />
+                    </VBox>
+                    <core:Title text="" />
+                    <VBox>
+                        <Label
+                            text="SOCIAL LINKS"
+                            design="bold"
+                        />
+                        <HBox>
+                            <Image
+                                src="https://museumandgallery.org/wp-content/uploads/2020/03/Facebook-Icon-Facebook-Logo-Social-Media-Fb-Logo-Facebook-Logo-PNG-and-Vector-with-Transparent-Background-for-Free-Download.png"
+                                width="35px"
+                                press="onclickfb"
+                            />
+                            <Image
+                                src=" https://cdn.pixabay.com/photo/2016/08/09/17/52/instagram-1581266__340.jpg"
+                                width="35px"
+                                press="onclickinsta"
+                            />
+                            <Image
+                                src="https://seeklogo.com/images/T/twitter-logo-7249D46199-seeklogo.com.png "
+                                width="35px"
+                                press="onclicktwitter"
+                            />
+                        </HBox>
+                        <VBox>
+                            <Image
+                                src="https://b.zmtcdn.com/data/webuikit/9f0c85a5e33adb783fa0aef667075f9e1556003622.png "
+                                width="120px"
+                                press=""
+                            />
+                            <Text text="" />
+                            <Image
+                                src="https://b.zmtcdn.com/data/webuikit/23e930757c3df49840c482a8638bf5c31556001144.png "
+                                width="120px"
+                                press=""
+                            />
+                        </VBox>
+                    </VBox>
+                </f:content>
+            </f:SimpleForm>
+        </content>
+    </Page>
+</mvc:View>

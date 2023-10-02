@@ -1,0 +1,252 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:m="sap.ui.webc.main"
+    xmlns:fiori="sap.ui.webc.fiori"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:l="sap.ui.layout"
+    xmlns:c="sap.ui.core"
+    displayBlock="true"
+    xmlns:tnt="sap.tnt"
+    xmlns:semantic="sap.m.semantic"
+    xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+>
+    <Dialog
+        id="idDialog"
+        title="Filters"
+        class="addcss"
+    >
+        <content>
+            <tnt:ToolPage id="toolPage">
+                <tnt:header>
+                    <tnt:ToolHeader>
+                        <Button
+                            id="sideNavigationToggleButton"
+                            icon="sap-icon://menu2"
+                            type="Transparent"
+                            press=".onSideNavButtonPress"
+                        >
+                            <layoutData>
+                                <OverflowToolbarLayoutData
+                                    priority="NeverOverflow"
+                                />
+                            </layoutData>
+                        </Button>
+                        <ToolbarSpacer width="20px" />
+                        <ToolbarSpacer width="550px" />
+                        <!-- <Button text="Alan Smith" type="Transparent" press=".handleUserNamePress" ariaHasPopup="Menu"> -->
+                        <Button
+                            icon="sap-icon://decline"
+                            type="Reject"
+                            press="handleCloseDialog"
+                        />
+                    </tnt:ToolHeader>
+                </tnt:header>
+                <tnt:sideContent>
+                    <tnt:SideNavigation
+                        expanded="true"
+                        itemSelect=".onItemSelect"
+                    >
+                        <tnt:NavigationList>
+                            <tnt:NavigationListItem
+                                icon="sap-icon://sort"
+                                text="Sort By"
+                                enabled="true"
+                                key="root1"
+                            />
+                            <tnt:NavigationListItem
+                                icon="sap-icon://map-2"
+                                text="Cuisines"
+                                enabled="true"
+                                key="page1"
+                            />
+                            <tnt:NavigationListItem
+                                icon="sap-icon://unfavorite"
+                                text="Rating"
+                                enabled="true"
+                                key="page2"
+                            />
+                            <tnt:NavigationListItem
+                                icon="sap-icon://sales-order"
+                                text="Cost Per Person"
+                                enabled="true"
+                                key="root2"
+                            />
+                            <tnt:NavigationListItem
+                                icon="sap-icon://filter"
+                                text="More Filters"
+                                enabled="true"
+                                key="search"
+                            />
+                        </tnt:NavigationList>
+                    </tnt:SideNavigation>
+                </tnt:sideContent>
+                <tnt:mainContents>
+                    <NavContainer
+                        id="pageContainer"
+                        initialPage="root1"
+                    >
+                        <pages>
+                            <ScrollContainer
+                                id="root1"
+                                horizontal="false"
+                                vertical="true"
+                                height="100%"
+                                class="sapUiContentPadding"
+                            >
+                                <RadioButtonGroup columns="1">
+                                    <RadioButton
+                                        id="_idpopular"
+                                        text="Popularity"
+                                        selected="true"
+                                        select="onpressradio1"
+                                    />
+                                    <RadioButton
+                                        text="Rating: High to Low"
+                                        id="_idrating"
+                                        select="onpressradio2"
+                                    />
+                                    <RadioButton
+                                        text="Delivery Time"
+                                        id="_iddelivery"
+                                        select="onpressradio2"
+                                    />
+                                    <RadioButton
+                                        text="Cost: Low to High "
+                                        id="_idcostlow"
+                                        select="onpressradio2"
+                                    />
+                                    <RadioButton
+                                        text="Cost: High to Low"
+                                        id="_idcosthigh"
+                                        select="onpressradio2"
+                                    />
+                                </RadioButtonGroup>
+                            </ScrollContainer>
+                            <ScrollContainer
+                                id="page1"
+                                horizontal="false"
+                                vertical="true"
+                                height="100%"
+                                class="sapUiContentPadding"
+                            >
+                                  <SearchField
+                        width="400px"
+                        placeholder="search here"
+                        search="onFilterSearch"
+                        id="_idNamm"
+                    />
+                  
+
+<VBox>
+					<HBox>	<CheckBox text="Abruzzese" selected="true" />
+						<CheckBox text="Aegean" selected="false" /> </HBox>
+				<HBox>		<CheckBox text="Afghani" selected="false" />
+						<CheckBox text="Agritourism" selected="false" />  </HBox>
+				<HBox>		<CheckBox text="Algerian" selected="false" />
+						<CheckBox text="Amazonian" selected="false" />  </HBox>
+				<HBox>		<CheckBox text="Amish" selected="false" />
+						<CheckBox text="Aceh" selected="false" />    </HBox>
+				<HBox>		<CheckBox text="Afghan" selected="false" />
+						<CheckBox text="African" selected="false" />   </HBox>
+				<HBox>		<CheckBox text="Alentejana" selected="false" />
+						<CheckBox text="Altoatesine" selected="false" />  </HBox>
+
+				<HBox>	<CheckBox text="Brasserie" selected="true" />
+						<CheckBox text="British" selected="false" /> </HBox>
+				<HBox>		<CheckBox text="Bulgarian" selected="false" />
+						<CheckBox text="Burmese" selected="false" />  </HBox>
+				<HBox>		<CheckBox text="Cafeteria" selected="false" />
+						<CheckBox text="cake" selected="false" />  </HBox>
+				<HBox>		<CheckBox text="Cambodian" selected="false" />
+						<CheckBox text="Chinese" selected="false" />    </HBox>
+				<HBox>		<CheckBox text="Colombian" selected="false" />
+						<CheckBox text="Fast Food" selected="false" />   </HBox>
+				<HBox>		<CheckBox text="German" selected="false" />
+						<CheckBox text="Hungarian" selected="false" />  </HBox>
+						
+						
+						 </VBox>
+                            </ScrollContainer>
+                            <ScrollContainer
+                                id="page2"
+                                horizontal="false"
+                                vertical="true"
+                                height="100%"
+                                class="sapUiContentPadding"
+                            >
+                                <VBox>
+								<Text
+                                    text="Rating. "
+                                />
+								<Text
+                                    text="Any "
+                                /> </VBox>
+									<Slider liveChange="onSliderLiveChange" step="20" value="100"/>
+                            </ScrollContainer>
+                            <ScrollContainer
+                                id="root2"
+                                horizontal="false"
+                                vertical="true"
+                                height="100%"
+                                class="sapUiContentPadding"
+                            >
+							<VBox>
+                                 <Text
+                                    text="Cost per person."
+                                />
+								<Text text = "$0 - Any."></Text>  </VBox>
+									<Slider liveChange="onSliderLiveChange" step="20" value="100"/>
+                            </ScrollContainer>
+
+							 <ScrollContainer
+                                id="search"
+                                horizontal="false"
+                                vertical="true"
+                                height="100%"
+                                class="sapUiContentPadding"
+                            >
+                                 <SearchField
+                        width="400px"
+                        placeholder="search here"
+                        search="onFilterSearch"
+                        id="_idNam"
+                    />
+                            </ScrollContainer>
+
+							
+                        </pages>
+                    </NavContainer>
+                </tnt:mainContents>
+            </tnt:ToolPage>
+        </content>
+
+		 <footer>
+		 <!-- <Bar design = "Footer">
+		 <contentRight> -->
+            <OverflowToolbar>
+                <!-- <ToolbarSpacer /> -->
+                <Button
+                    text="Apply"
+                    icon="sap-icon://add"
+                    id="add1"
+                    type="Success"
+                    visible="true"
+					press = "handleaddstatement"
+                />
+               
+                <Button
+                    text="Clear All"
+                    icon="sap-icon://delete"
+                    id="delete1"
+                    type="Reject"
+                    press="handleDeleteStatement"
+                    visible="true"
+                />
+               
+            </OverflowToolbar>
+			<!-- </contentRight></Bar> -->
+        </footer>
+
+    </Dialog>
+</core:FragmentDefinition>
